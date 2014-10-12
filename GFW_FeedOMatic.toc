@@ -1,0 +1,25 @@
+## Interface: 50200
+## Version: 5.2
+## X-Revision: $Rev: 785 $
+## X-Date: $Date: 2013-03-04 22:37:11 -0800 (Mon, 04 Mar 2013) $
+## Author: Gazmik Fizzwidget
+## X-Website: http://fizzwidget.com/feedomatic
+## X-Appcast: http://fizzwidget.com/notes/feedomatic/feed
+## Title: Fizzwidget Feed-O-Matic
+## Notes: Helps a Hunter keep his pets well fed (and the food in his inventory under control).
+## X-Category: Hunter
+## SavedVariables: GFW_FeedOMatic_DB, FOM_CookingRecipes
+## SavedVariablesPerCharacter: FOM_CookingDifficulty
+## LoadManagers: AddonLoader
+## X-LoadOn-Class: Hunter
+
+GFWUtils.lua
+GFWTable.lua
+
+Libs.xml
+
+LocaleSupport.lua
+localization.lua
+FeedOMatic_Emotes.lua
+FeedOMatic.lua
+FeedOMatic.xml
