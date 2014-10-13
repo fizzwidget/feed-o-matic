@@ -1434,9 +1434,6 @@ function GFW_FeedOMatic:OnInitialize()
 		return;
 	end
 
-	local version = GetAddOnMetadata(addonName, "Version");
-	self.version = version.." (r"..gsub("$Revision: 780 $", "(%d+)", "%1")..")"
-
 	-- Create DB
 	self.db = AceDB:New("GFW_FeedOMatic_DB", defaults, "Default")
 	self.db.RegisterCallback(self, "OnProfileChanged", "OnProfileChanged")

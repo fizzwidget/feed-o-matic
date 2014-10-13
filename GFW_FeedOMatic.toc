@@ -1,7 +1,5 @@
-## Interface: 50200
-## Version: 5.2
-## X-Revision: $Rev: 785 $
-## X-Date: $Date: 2013-03-04 22:37:11 -0800 (Mon, 04 Mar 2013) $
+## Interface: 60000
+## Version: 6.0
 ## Author: Gazmik Fizzwidget
 ## X-Website: http://fizzwidget.com/feedomatic
 ## X-Appcast: http://fizzwidget.com/notes/feedomatic/feed
