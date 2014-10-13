@@ -1,7 +1,7 @@
 -- (c) 2007 Nymbia.  see LGPLv2.1.txt for full details.
 --DO NOT MAKE CHANGES TO THIS FILE BEFORE READING THE WIKI PAGE REGARDING CHANGING THESE FILES
 if not LibStub("LibPeriodicTable-3.1", true) then error("PT3 must be loaded before data") end
-LibStub("LibPeriodicTable-3.1"):AddData("Consumable", gsub("$Rev: 423 $", "(%d+)", function(n) return n+90000 end), {
+LibStub("LibPeriodicTable-3.1"):AddData("Consumable", gsub("$Rev: 452 $", "(%d+)", function(n) return n+90000 end), {
 	["Consumable.Anti-Venom"]="6452:25,6453:35,13462:60,2633:60,19440:60,12586:60,9030:60,3386:60,31437:70,25550:70",
 	["Consumable.Bandage.Basic"]="1251:66,2581:114,3530:161,3531:301,6450:400,6451:640,8544:800,8545:1104,14529:1360,14530:2000,21990:2800,21991:3400,38643:3400,38640:4100,34721:4800,34722:5800,53049:17400,53050:26000,53051:35000,72985:54720,72986:123120",
 	["Consumable.Bandage.Battleground.Alterac Valley"]="19307:2000",
@@ -117,7 +117,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("Consumable", gsub("$Rev: 423 $", "(%d+)
 	["Consumable.Cooldown.Stone.Mana.Other"]="23354:60,23386:100,31451:300,20520:1200,12662:1200",
 	["Consumable.Cooldown.Stone.Mana.Mana Stone"]="36799:47250,81901:9450",
 	["Consumable.Cooldown.Drums.Bombs"]="m,Misc.Explosives",
-	["Consumable.Cooldown.Drums.Drums"]="29528:1,29530:2,29531:3,29529:4,29532:5,49633:6,49634:7",
+	["Consumable.Cooldown.Drums.Drums"]="29528:1,29530:2,29531:3,29529:4,29532:5,49633:6,49634:7,102351:8",
 	["Consumable.Cooldown.Drums.Nets"]="24268:70,24269:80,41509:83",
 	["Consumable.Cooldown.Drums.Other"]="1127,1178,1191,1399,1434,2091,3456,4384,4388,4391,4395,4852,4941,5332,10646,10719,10830,11565,11566,13509,13514,15778,21325,23379,23841",
 
@@ -172,7 +172,7 @@ LibStub("LibPeriodicTable-3.1"):AddData("Consumable", gsub("$Rev: 423 $", "(%d+)
 	["Consumable.Food.Inedible.Meat"]="729,20424,769,1015,1081,2672,2673,2677,2924,3173,3404,3667,3712,3730,3731,4739,5051,5465,5467,5469,5470,5471,12037,12184,12202,12203,12204,12205,12208,12223,27669,27671,27677,27678,22644,27668,23676,31670,27674,31671,27682,27681,35562,1080,21024,2886,723,43011,43010,43009,33120,35794,43012,43013,34736,62779,62778,62780,62781,62782,62783,62784,62785,67229,74833,74834,74837,74838,74839,75014,85506",
 	["Consumable.Food.Inedible.Fungus"]="27676",
 	["Consumable.Food.Inedible.Fruit"]="74840,74841,74842,74843,74844,74846,74847,74848,74849,74850",
-	["Consumable.Food.Feast"]="43015,43478,34753,43480,62289,62290",
+	["Consumable.Food.Feast"]="46887:60,43480:70,43478:70,43015:70,34753:70,62289:81,62290:81,101630:90,101661:90,101662:90",
 	["Consumable.Food.Edible.Meat.Mana"]="85501:200000",
 	["Consumable.Food.Edible.Fish.Mana"]="74636:200000",
 
@@ -228,8 +228,8 @@ LibStub("LibPeriodicTable-3.1"):AddData("Consumable", gsub("$Rev: 423 $", "(%d+)
 	["Consumable.Potion.Other.Runic"]="39327:50",
 
 	--NOW AUTOGENNED (These are now datamined based on effect text filters and exclusion lists. -JCinDE)
-	["Consumable.Potion.Recovery.Healing.Endless"]="43569:80,80040:90",
-	["Consumable.Potion.Recovery.Healing.Basic"]="118:5,858:13,4596:15,929:22,1710:31,3928:45,18839:45,13446:55,28100:60,33934:60,22829:65,32763:65,32947:65,39327:65,43531:65,23822:66,33092:66,31676:69,31838:70,31839:70,31852:70,31853:70,39671:75,33447:80,41166:80,57191:81,63300:81,76097:90,88416:90",
+	["Consumable.Potion.Recovery.Healing.Endless"]="43569:80",
+	["Consumable.Potion.Recovery.Healing.Basic"]="118:5,858:13,4596:15,929:22,1710:31,3928:45,18839:45,13446:55,28100:60,33934:60,22829:65,32763:65,32947:65,39327:65,43531:65,23822:66,33092:66,31676:69,31838:70,31839:70,31852:70,31853:70,39671:75,33447:80,41166:80,57191:81,63300:81,76097:90,88416:90,93742:90",
 	["Consumable.Potion.Recovery.Healing.Zone-Restricted"]="17349:45,17348:55,32904:65,32905:65,32784:70,32910:70,67415:81,63144:85,64994:85,92954:90",
 	["Consumable.Potion.Recovery.Mana.Endless"]="43570:80",
 	["Consumable.Potion.Recovery.Mana.Basic"]="2455:15,3087:15,3385:24,3827:32,6149:41,13443:51,18841:51,13444:59,28101:62,33935:62,22832:68,32762:68,32948:68,43530:68,23823:69,33093:69,31840:70,31841:70,31854:70,31855:70,31677:72,40067:75,33448:80,42545:80,57192:81,76098:90",
