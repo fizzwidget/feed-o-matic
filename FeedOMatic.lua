@@ -406,7 +406,7 @@ function FOM_OnEvent(self, event, arg1, arg2)
 		end
 	elseif (event == "SPELL_UPDATE_COOLDOWN") then
 		local start, duration, enable = GetSpellCooldown(FOM_FEED_PET_SPELL_ID);
-		CooldownFrame_SetTimer(FOM_FeedButtonCooldown, start, duration, enable);
+		CooldownFrame_Set(FOM_FeedButtonCooldown, start, duration, enable);
 	elseif (event == "SPELL_UPDATE_USABLE") then
 		local isUsable, notEnoughtMana = IsUsableSpell(FOM_FEED_PET_SPELL_ID);
 		if (not isUsable) then
