@@ -147,7 +147,17 @@ function FOM_FeedButton_OnEnter()
 	FOM_TooltipDebug();
 	
 	FOM_FeedTooltip:Show();
+
+	-- muck with our special tooltip so it looks right
 	FOM_FeedTooltip:SetHeight(FOM_FeedTooltip:GetHeight() + 12 + FOM_FeedTooltipHeader:GetHeight());
+	FOM_FeedTooltipTextLeft1:SetFontObject("GameFontNormal");
+	FOM_FeedTooltipTextLeft1:ClearAllPoints();
+	FOM_FeedTooltipTextLeft1:SetPoint("TOPLEFT", FOM_FeedTooltipHeader, "BOTTOMLEFT", 0, -12);
+	FOM_FeedTooltipTextLeft1:SetJustifyH("LEFT");
+	FOM_FeedTooltipTextLeft2:SetJustifyH("LEFT");
+	FOM_FeedTooltipTextLeft3:SetJustifyH("LEFT");
+	FOM_FeedTooltipTextLeft4:SetJustifyH("LEFT");
+	
 end
 
 function FOM_TooltipDebug()	
@@ -311,14 +321,6 @@ function FOM_Initialize(self)
 		FOM_FeedButton:Hide();
 	end
 
-	-- muck with our special tooltip so it looks right
-	FOM_FeedTooltipTextLeft1:SetFontObject("GameFontNormal");
-	FOM_FeedTooltipTextLeft1:ClearAllPoints();
-	FOM_FeedTooltipTextLeft1:SetPoint("TOPLEFT", FOM_FeedTooltipHeader, "BOTTOMLEFT", 0, -12);
-	FOM_FeedTooltipTextLeft1:SetJustifyH("LEFT");
-	FOM_FeedTooltipTextLeft2:SetJustifyH("LEFT");
-	FOM_FeedTooltipTextLeft3:SetJustifyH("LEFT");
-	FOM_FeedTooltipTextLeft4:SetJustifyH("LEFT");
 	
 	-- set key binding to click FOM_FeedButton
 	FOM_UpdateBindings();
