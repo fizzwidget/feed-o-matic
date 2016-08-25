@@ -628,6 +628,7 @@ function FOM_PickFoodForButton()
 			FOM_NoFoodError = string.format(FOM_ERROR_NO_FOOD_NO_FALLBACK, pet);
 			FOM_SetupButton(fallbackBag, fallbackSlot, "alt");
 			FOM_FeedButtonIcon:SetTexture(foodIcon);
+			FOM_FeedButtonCount:SetText(GetItemCount(FOM_NextFoodLink))
 		else
 			-- No Food Could be Found
 			FOM_NoFoodError = string.format(FOM_ERROR_NO_FOOD, pet);
@@ -635,6 +636,8 @@ function FOM_PickFoodForButton()
 			FOM_FeedButtonIcon:SetTexture(FOM_FeedPetSpellIcon);
 			--GFWUtils.Print("Can't feed? #SortedFoodList:"..#SortedFoodList);
 			--DevTools_Dump(GetPetFoodTypes());
+			FOM_FeedButtonCount:SetText("")
+			
 		end
 		
 		FOM_FeedButtonIcon:SetVertexColor(0.5, 0.5, 1);
@@ -642,6 +645,8 @@ function FOM_PickFoodForButton()
 		FOM_NoFoodError = nil;
 		FOM_FeedButtonIcon:SetVertexColor(1, 1, 1);
 		FOM_FeedButtonIcon:SetTexture(foodIcon);
+		FOM_FeedButtonCount:SetText(GetItemCount(FOM_NextFoodLink))
+		
 	end
 	
 	-- debug
