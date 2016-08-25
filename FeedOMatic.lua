@@ -252,18 +252,12 @@ function FOM_GetFeedPetSpellName()
 	-- we can get the spell name from the ID
 	local _;
 	FOM_FeedPetSpellName, _, FOM_FeedPetSpellIcon = GetSpellInfo(FOM_FEED_PET_SPELL_ID);
-
+	
 	BINDING_NAME_FOM_FEED = FOM_FeedPetSpellName;
 	
-	-- but we also want to know whether we can cast it
-	for tabIndex = 1, GetNumSpellTabs() do
-		local tabName, tabIcon, offset, numSpells = GetSpellTabInfo(tabIndex);
-		for spellID = offset + 1, offset + numSpells do
-			local type, id = GetSpellBookItemInfo(spellID, BOOKTYPE_SPELL);
-			if (id == FOM_FEED_PET_SPELL_ID and type == "SPELL") then
-				return FOM_FeedPetSpellName;
-			end
-		end
+	-- but we also want to know whether the player knows the spell	
+	if (IsPlayerSpell(FOM_FEED_PET_SPELL_ID)) then
+		return FOM_FeedPetSpellName;
 	end
 	
 	return nil;
