@@ -71,7 +71,7 @@ FOM_Emotes.enUS = {
 	
 	-- emotes for categories of items
 	-- use keys from LibPeriodicTable's Consumable.Food section
-	-- TODO: need a PT-less 
+	-- TODO: need a PT-less way to key on both food diet and what we now call food type
 	-- ["Consumable.Food.Edible.Bread.Conjured"] = {
 	-- 	"Tastes great, less filling!",
 	-- },
