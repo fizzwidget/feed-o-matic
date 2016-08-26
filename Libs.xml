@@ -4,7 +4,7 @@
 <Script file="Libs\LibStub\LibStub.lua"/>
 <Script file="Libs\LibPeriodicTable-3.1\LibPeriodicTable-3.1.lua"/>
 <Script file="Libs\LibPeriodicTable-3.1-Consumable\LibPeriodicTable-3.1-Consumable.lua"/>
-<Script file="Libs\LibPeriodicTable-3.1-TradeskillResultMats\LibPeriodicTable-3.1-TradeskillResultMats.lua"/>
+
 <Include file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml" />
 <Include file="Libs\AceAddon-3.0\AceAddon-3.0.xml" />
 <Include file="Libs\AceDB-3.0\AceDB-3.0.xml" />

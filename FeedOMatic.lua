@@ -937,9 +937,10 @@ function FOM_BuildFoodsUI(panel)
 	s:SetPoint("TOPLEFT", borderFrame, "TOPLEFT", 53, -12);
 	s:SetText(FOM_OPTIONS_FOODS_NAME);
 	
-	s = panel:CreateFontString("FOM_FoodList_CookingHeader", "OVERLAY", "GameFontNormalSmall");
-	s:SetPoint("TOPRIGHT", borderFrame, "TOPRIGHT", -26, -12);
-	s:SetText(FOM_OPTIONS_FOODS_COOKING);
+	-- DISABLED until I replace PT TradeskillResultMats
+	-- s = panel:CreateFontString("FOM_FoodList_CookingHeader", "OVERLAY", "GameFontNormalSmall");
+	-- s:SetPoint("TOPRIGHT", borderFrame, "TOPRIGHT", -26, -12);
+	-- s:SetText(FOM_OPTIONS_FOODS_COOKING);
 	
 	local listItem = CreateFrame("Button", "FOM_FoodList1", panel, "FOM_FoodListItemTemplate");
 	listItem:SetPoint("TOPLEFT", borderFrame, "TOPLEFT", 5, -29);
@@ -1184,36 +1185,37 @@ function FOM_FoodListUIUpdate()
 					listButton.cookingIcons[iconIndex]:SetTexture("");
 					listButton.cookingItems[iconIndex]:Hide();
 				end
-				local cookingResultString = PT:ItemInSet(listItem.id, "TradeskillResultMats.Reverse.Cooking");
-				if (cookingResultString) then
-					local resultIndex = 1;
-					local cookingResults = {strsplit(";", cookingResultString)};
-					for _, resultString in pairs(cookingResults) do
-						local _, _, itemID = string.find(resultString, "^(%d+)");
-						if (itemID) then
-							if (resultIndex > MAX_COOKING_RESULTS) then
-								--print(GetItemInfo(listItem.id), resultIndex)
-								break;
-							end
-							
-							itemID = tonumber(itemID);
-							icon = GetItemIcon(itemID);
-							listButton.cookingIcons[resultIndex]:SetTexture(icon);
-							listButton.cookingItems[resultIndex]:Show();
-							listButton.cookingItems[resultIndex].item = itemID;
-							listButton.cookingItems[resultIndex].recipe = true;
-							
-							local difficulty = FOM_CookingDifficulty[itemID];
-							if (difficulty) then
-								listButton.cookingIcons[resultIndex]:SetVertexColor(1, 1, 1);
-							else
-								listButton.cookingIcons[resultIndex]:SetVertexColor(0.25, 0.25, 0.25);
-							end
-							resultIndex = resultIndex + 1;
-						end
-					end
-				end
-							
+				-- DISABLED until I have a replacement for PT TradeskillResultMats
+				-- local cookingResultString = PT:ItemInSet(listItem.id, "TradeskillResultMats.Reverse.Cooking");
+				-- if (cookingResultString) then
+				-- 	local resultIndex = 1;
+				-- 	local cookingResults = {strsplit(";", cookingResultString)};
+				-- 	for _, resultString in pairs(cookingResults) do
+				-- 		local _, _, itemID = string.find(resultString, "^(%d+)");
+				-- 		if (itemID) then
+				-- 			if (resultIndex > MAX_COOKING_RESULTS) then
+				-- 				--print(GetItemInfo(listItem.id), resultIndex)
+				-- 				break;
+				-- 			end
+				--
+				-- 			itemID = tonumber(itemID);
+				-- 			icon = GetItemIcon(itemID);
+				-- 			listButton.cookingIcons[resultIndex]:SetTexture(icon);
+				-- 			listButton.cookingItems[resultIndex]:Show();
+				-- 			listButton.cookingItems[resultIndex].item = itemID;
+				-- 			listButton.cookingItems[resultIndex].recipe = true;
+				--
+				-- 			local difficulty = FOM_CookingDifficulty[itemID];
+				-- 			if (difficulty) then
+				-- 				listButton.cookingIcons[resultIndex]:SetVertexColor(1, 1, 1);
+				-- 			else
+				-- 				listButton.cookingIcons[resultIndex]:SetVertexColor(0.25, 0.25, 0.25);
+				-- 			end
+				-- 			resultIndex = resultIndex + 1;
+				-- 		end
+				-- 	end
+				-- end
+				--
 							
 				if (FOM_Config.excludedFoods[listItem.id] or FOM_Config.excludedCategories[listItem.header]) then
 					listButton.check:Hide();
