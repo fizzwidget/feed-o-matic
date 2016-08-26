@@ -4,7 +4,7 @@
 local addonName, addonTable = ...; 
 
 -- letting these be global inside Ace callbacks causes bugs
-local FOM_Config, FOM_IsInDiet, FOM_IsKnownFood, FOM_PTCategories, FOM_CategoryNames, FOM_FoodsUIList
+local FOM_Config, FOM_IsInDiet, FOM_IsKnownFood, FOM_CategoryNames, FOM_FoodsUIList
 
 -- Food quality by itemLevel
 --
@@ -50,34 +50,12 @@ FOM_DifficultyColors = {
 	QuestDifficultyColors["impossible"],
 };
 
-FOM_PTDiets = {
-	[FOM_DIET_MEAT] = "Consumable.Food.Meat",
-	[FOM_DIET_FISH] = "Consumable.Food.Fish",
-	[FOM_DIET_BREAD] = "Consumable.Food.Bread",
-	[FOM_DIET_CHEESE] = "Consumable.Food.Cheese",
-	[FOM_DIET_FRUIT] = "Consumable.Food.Fruit",
-	[FOM_DIET_FUNGUS] = "Consumable.Food.Fungus",
-}
-
-FOM_PTCategories = {
-	"Consumable.Food.Edible.Bread.Conjured",
-	"Consumable.Food.Edible.Bread.Combo.Conjured",
-	"Consumable.Food.Edible.Basic.Non-Conjured",
-	"Consumable.Food.Edible.Combo.Non-Conjured",
-	"Consumable.Food.Edible.Bonus",
-	"Consumable.Food.Inedible",
+FOM_CategoryNames = { -- localized keys for FOM_FoodTypes indexes
+	FOM_OPTIONS_FOODS_CONJURED,
+	FOM_OPTIONS_FOODS_BASIC,
+	FOM_OPTIONS_FOODS_BONUS,
+	FOM_OPTIONS_FOODS_INEDIBLE,
 };
-FOM_CategoryNames = {
-	["Consumable.Food.Edible.Bread.Conjured"] = FOM_OPTIONS_FOODS_CONJURED,
-	["Consumable.Food.Edible.Bread.Combo.Conjured"] = FOM_OPTIONS_FOODS_CONJ_COMBO,
-	["Consumable.Food.Edible.Basic.Non-Conjured"] = FOM_OPTIONS_FOODS_BASIC,
-	["Consumable.Food.Edible.Combo.Non-Conjured"] = FOM_OPTIONS_FOODS_COMBO,
-	["Consumable.Food.Edible.Bonus"] = FOM_OPTIONS_FOODS_BONUS,
-	["Consumable.Food.Inedible"] = FOM_OPTIONS_FOODS_INEDIBLE,
-};
-
--- libraries
-local PT = LibStub("LibPeriodicTable-3.1");
 
 function FOM_FeedButton_PostClick(self, button, down)
 	if (not FOM_GetFeedPetSpellName()) then
@@ -735,7 +713,7 @@ function FOM_FlatFoodList(fallback)
 					elseif (petLevel - level < FOM_DELTA_EATS) then
 						local diet = FOM_IsInDiet(itemID);
 						if ( diet ) then
-							local avoid = FOM_ShouldAvoidFood(itemID, itemCount);
+							local avoid = FOM_ShouldAvoidFood(itemID, itemCount, diet);
 							if (fallback or not avoid) then
 								local categoryIndex = FOM_Foods[diet][itemID];
 								table.insert(foodList, {bag=bagNum, slot=itemNum, link=itemLink, count=itemCount, delta=(petLevel - level), priority=categoryIndex, icon=itemIcon});
@@ -800,10 +778,10 @@ function FOM_NewFindFood(fallback)
 	return nil;
 end
 
-function FOM_ShouldAvoidFood(itemID, quantity)
-	-- if (FOM_Config.excludedFoods[itemID]) then
-	-- 	return true;
-	-- end
+function FOM_ShouldAvoidFood(itemID, quantity, diet)
+	if (FOM_Config.excludedFoods[itemID]) then
+		return true;
+	end
 	local foodName = GetItemInfo(itemID);
 	if (foodName == nil) then
 		GFWUtils.DebugLog("Can't get info for item ID "..itemID..", assuming it's OK to eat.");
@@ -815,12 +793,13 @@ function FOM_ShouldAvoidFood(itemID, quantity)
 			return true;
 		end
 	end
-	-- for category in pairs(FOM_Config.excludedCategories) do
-	-- 	if (PT:ItemInSet(itemID, category)) then
-	-- 		GFWUtils.DebugLog("Skipping "..quantity.."x "..foodName.."; is in category "..category..".");
-	-- 		return true;
-	-- 	end
-	-- end
+	for category in pairs(FOM_Config.excludedCategories) do
+		local foodCategory = FOM_Foods[diet][itemID];
+		if (category == foodCategory ) then
+			GFWUtils.DebugLog("Skipping "..quantity.."x "..foodName.."; is in category "..category..".");
+			return true;
+		end
+	end
 	--GFWUtils.DebugLog("Not skipping "..quantity.."x "..foodName.."; doesn't have other uses.");
 	return false;
 end
@@ -1015,20 +994,20 @@ end
 
 function FOM_FoodListUI_UpdateList()
 	FOM_FoodsUIList = {};
-	for _, header in pairs(FOM_PTCategories) do
-		if (PT:GetSetTable(header)) then
-			local list = {};
-			local uniqueList = {};
-			-- build list of foods from PT matching criteria
-			local petLevel = UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA;	-- player lvl - 3 assumed if no pet summoned
-			if (UnitExists("pet")) then
-				petLevel = UnitLevel("pet");
-			end
-			local itemNamesCache = {};
-			for itemID in PT:IterateSet(header) do
+	for _, header in pairs(FOM_FoodTypes) do
+		local list = {};
+		local uniqueList = {};
+		-- build list of foods from matching criteria
+		local petLevel = UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA;	-- player lvl - 3 assumed if no pet summoned
+		if (UnitExists("pet")) then
+			petLevel = UnitLevel("pet");
+		end
+		local itemNamesCache = {};
+		for diet, table in pairs(FOM_Foods) do
+			for itemID, foodType in pairs(table) do
 				local name, _, _, iLvl = GetItemInfo(itemID);
 				local skip = false;
-				if (name) then
+				if (name and header == foodType) then
 					itemNamesCache[itemID] = name;
 					local delta = petLevel - iLvl;
 					if (FOM_Config.ShowOnlyInventory) then
@@ -1036,6 +1015,7 @@ function FOM_FoodListUI_UpdateList()
 							skip = true;
 						end
 					end
+					-- TODO: invert diet check for efficiency now that we're inside a diet loop
 					local dietChecked = false;
 					if (not skip and FOM_Config.ShowOnlyPetFoods) then
 						if (UnitExists("pet")) then
@@ -1048,11 +1028,7 @@ function FOM_FoodListUI_UpdateList()
 							skip = true;
 						end
 					end
-					if (not skip and not dietChecked and not FOM_IsKnownFood(itemID)) then
-						-- make sure PT foods not in pet diets don't show up
-						skip = true;
-					end
-					
+				
 					if (not skip) then
 						if (not uniqueList[itemID]) then
 							tinsert(list, itemID);
@@ -1069,32 +1045,34 @@ function FOM_FoodListUI_UpdateList()
 					end
 				end
 			end
-			-- sort list for display
-			local function sortHigherQualityFirst(a,b)
-				if (uniqueList[a] == uniqueList[b]) then
-					return itemNamesCache[a] < itemNamesCache[b];
-				else
-					return uniqueList[a] < uniqueList[b];
-				end
-			end
-			local function sortLowerQualityFirst(a,b)
-				if (uniqueList[a] == uniqueList[b]) then
-					return itemNamesCache[a] < itemNamesCache[b];
-				else
-					return uniqueList[a] > uniqueList[b];
-				end
-			end
-			if (not FOM_Config.UseLowLevelFirst) then
-				table.sort(list, sortHigherQualityFirst);
+		end
+
+		-- sort list for display
+		local function sortHigherQualityFirst(a,b)
+			if (uniqueList[a] == uniqueList[b]) then
+				return itemNamesCache[a] < itemNamesCache[b];
 			else
-				table.sort(list, sortLowerQualityFirst);
-			end
-			tinsert(FOM_FoodsUIList, header);
-			for _, itemID in pairs(list) do
-				tinsert(FOM_FoodsUIList, {id=itemID,header=header});
+				return uniqueList[a] < uniqueList[b];
 			end
 		end
+		local function sortLowerQualityFirst(a,b)
+			if (uniqueList[a] == uniqueList[b]) then
+				return itemNamesCache[a] < itemNamesCache[b];
+			else
+				return uniqueList[a] > uniqueList[b];
+			end
+		end
+		if (not FOM_Config.UseLowL/evelFirst) then
+			table.sort(list, sortHigherQualityFirst);
+		else
+			table.sort(list, sortLowerQualityFirst);
+		end
+		tinsert(FOM_FoodsUIList, header);
+		for _, itemID in pairs(list) do
+			tinsert(FOM_FoodsUIList, {id=itemID,header=header});
+		end
 	end
+	FOM_List = FOM_FoodsUIList
 	FOM_FoodListUIUpdate();
 end
 
@@ -1129,7 +1107,7 @@ function FOM_FoodListUIUpdate()
 			listButton:SetID(listIndex);
 			listButton:Show();
 			
-			if ( type(listItem) == "string" ) then
+			if ( type(listItem) == "number" ) then
 				-- it's a header
 				listButton.header = listItem;
 				listButton.item = nil;
@@ -1349,37 +1327,37 @@ local options = {
 					desc = FOM_OPTIONS_NO_BUTTON_TIP,
 					arg = "NoButton",
 				},
-				-- blank = {
-				-- 	type = "header",
-				-- 	name = FOM_OPTIONS_FOODS_TITLE,
-				-- 	order = 10,
-				-- },
-				-- tips = {
-				-- 	type = "description",
-				-- 	name = FOM_OPTIONS_FOODS_TEXT,
-				-- 	order = 11,
-				-- 			   	},
-				-- 			   	showOnlyPetFoods = {
-				-- 			   	    type = 'toggle',
-				-- 			   	    order = 12,
-				-- 			   	    width = "double",
-				-- 			   	    name = FOM_OPTIONS_FOODS_ONLY_PET,
-				-- 	desc = function()
-				-- 		if (UnitExists("pet")) then
-				-- 			return format(FOM_OPTIONS_FOODS_ONLY_PET_TIP, UnitLevel("pet"), UnitCreatureFamily("pet"));
-				-- 		else
-				-- 			return format(FOM_OPTIONS_FOODS_ONLY_LVL_TIP, UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA);
-				-- 		end
-				-- 	end,
-				-- 			   	    arg = "ShowOnlyPetFoods",
-				-- 			   	},
-				-- 			   	showOnlyInventory = {
-				-- 			   	    type = 'toggle',
-				-- 	order = 13,
-				-- 	width = "double",
-				-- 	name = FOM_OPTIONS_FOODS_ONLY_INV,
-				-- 	arg = "ShowOnlyInventory",
-				-- },
+				blank = {
+					type = "header",
+					name = FOM_OPTIONS_FOODS_TITLE,
+					order = 10,
+				},
+				tips = {
+					type = "description",
+					name = FOM_OPTIONS_FOODS_TEXT,
+					order = 11,
+							   	},
+							   	showOnlyPetFoods = {
+							   	    type = 'toggle',
+							   	    order = 12,
+							   	    width = "double",
+							   	    name = FOM_OPTIONS_FOODS_ONLY_PET,
+					desc = function()
+						if (UnitExists("pet")) then
+							return format(FOM_OPTIONS_FOODS_ONLY_PET_TIP, UnitLevel("pet"), UnitCreatureFamily("pet"));
+						else
+							return format(FOM_OPTIONS_FOODS_ONLY_LVL_TIP, UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA);
+						end
+					end,
+							   	    arg = "ShowOnlyPetFoods",
+							   	},
+							   	showOnlyInventory = {
+							   	    type = 'toggle',
+					order = 13,
+					width = "double",
+					name = FOM_OPTIONS_FOODS_ONLY_INV,
+					arg = "ShowOnlyInventory",
+				},
 			},
 		},
 	},
@@ -1393,10 +1371,10 @@ local profileDefault = {
 	ShowOnlyPetFoods	= false,
 	ShowOnlyInventory	= false,
 	
-	-- excludedCategories = {
-	-- 	["Consumable.Food.Edible.Bonus"] = 1;
-	-- },
-	-- excludedFoods = {},
+	excludedCategories = {
+		["Consumable.Food.Edible.Bonus"] = 1;
+	},
+	excludedFoods = {},
 }
 local defaults = {}
 defaults.profile = profileDefault
@@ -1418,7 +1396,7 @@ function GFW_FeedOMatic:SetupOptions()
 	self.optionsFrames.general = AceConfigDialog:AddToBlizOptions(addonName, titleText, nil, "general")
 	self.optionsFrames.profile = AceConfigDialog:AddToBlizOptions(addonName, FOM_OPTIONS_PROFILE, titleText, "profile")
 	
-	-- FOM_BuildFoodsUI(self.optionsFrames.general);
+	FOM_BuildFoodsUI(self.optionsFrames.general);
 	local aceRefresh = self.optionsFrames.general.refresh;
 	self.optionsFrames.general.refresh = function(...)
 		aceRefresh(...);
