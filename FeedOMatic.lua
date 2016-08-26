@@ -18,7 +18,6 @@ FOM_DELTA_LOVES = 10;   -- 10 >= levelDelta = 35 happiness per tick
 MAX_KEEPOPEN_SLOTS = 150;
 FOM_FEED_PET_SPELL_ID = 6991;
 FOM_COOKING_SPELL_ID = 2550;
-FOM_MAX_PET_LEVEL_DELTA = 3; -- max # of levels a pet can be below yours (e.g. your pets are forced to 77 if you're 80)
 
 -- Variables
 FOM_LastPetName = nil;
@@ -998,10 +997,7 @@ function FOM_FoodListUI_UpdateList()
 		local list = {};
 		local uniqueList = {};
 		-- build list of foods from matching criteria
-		local petLevel = UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA;	-- player lvl - 3 assumed if no pet summoned
-		if (UnitExists("pet")) then
-			petLevel = UnitLevel("pet");
-		end
+		local petLevel = UnitLevel("player");	-- pet level is always == player level now
 		local itemNamesCache = {};
 		for diet, table in pairs(FOM_Foods) do
 			for itemID, foodType in pairs(table) do
@@ -1087,7 +1083,7 @@ function FOM_FoodListUIUpdate()
 	
 	FauxScrollFrame_Update(FOM_FoodListScrollFrame, numListItems, FOM_MAX_LIST_DISPLAYED, FOM_LIST_HEIGHT);
 	
-	local petLevel = UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA;	-- player lvl - 3 assumed if no pet summoned
+	local petLevel = UnitLevel("player"); -- pet level is always == player level now
 	if (UnitExists("pet")) then
 		petLevel = UnitLevel("pet");
 	end
@@ -1346,7 +1342,7 @@ local options = {
 						if (UnitExists("pet")) then
 							return format(FOM_OPTIONS_FOODS_ONLY_PET_TIP, UnitLevel("pet"), UnitCreatureFamily("pet"));
 						else
-							return format(FOM_OPTIONS_FOODS_ONLY_LVL_TIP, UnitLevel("player") - FOM_MAX_PET_LEVEL_DELTA);
+							return format(FOM_OPTIONS_FOODS_ONLY_LVL_TIP, UnitLevel("player"));
 						end
 					end,
 							   	    arg = "ShowOnlyPetFoods",
