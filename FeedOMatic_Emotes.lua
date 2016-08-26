@@ -71,16 +71,19 @@ FOM_Emotes.enUS = {
 	
 	-- emotes for categories of items
 	-- use keys from LibPeriodicTable's Consumable.Food section
-	["Consumable.Food.Edible.Bread.Conjured"] = {
-		"Tastes great, less filling!",
-	},
-	["Consumable.Food.Edible.Bread.Combo.Conjured"] = {
-		"Tastes great, less filling!",
-	},
-	["Consumable.Food.Inedible.Fish"] = {
-		"Mmm, sashimi!",
-	},
-	["Consumable.Food.Fungus"] = {
+	-- TODO: need a PT-less 
+	-- ["Consumable.Food.Edible.Bread.Conjured"] = {
+	-- 	"Tastes great, less filling!",
+	-- },
+	-- ["Consumable.Food.Edible.Bread.Combo.Conjured"] = {
+	-- 	"Tastes great, less filling!",
+	-- },
+	-- ["Consumable.Food.Inedible.Fish"] = {
+	-- 	"Mmm, sashimi!",
+	-- },
+	
+	-- emotes for entire diets
+	[FOM_DIET_FUNGUS] = {
 		"Trippy...",
 	},
 

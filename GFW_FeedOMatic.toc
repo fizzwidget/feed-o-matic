@@ -18,6 +18,7 @@ Libs.xml
 
 LocaleSupport.lua
 localization.lua
+FOM_Foods.lua
 FeedOMatic_Emotes.lua
 FeedOMatic.lua
 FeedOMatic.xml
