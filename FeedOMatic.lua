@@ -994,7 +994,7 @@ end
 
 function FOM_FoodListUI_UpdateList()
 	FOM_FoodsUIList = {};
-	for _, header in pairs(FOM_FoodTypes) do
+	for header = 1, #FOM_CategoryNames do
 		local list = {};
 		local uniqueList = {};
 		-- build list of foods from matching criteria
@@ -1062,7 +1062,7 @@ function FOM_FoodListUI_UpdateList()
 				return uniqueList[a] > uniqueList[b];
 			end
 		end
-		if (not FOM_Config.UseLowL/evelFirst) then
+		if (not FOM_Config.UseLowLevelFirst) then
 			table.sort(list, sortHigherQualityFirst);
 		else
 			table.sort(list, sortLowerQualityFirst);
