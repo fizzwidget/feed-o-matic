@@ -247,6 +247,82 @@ FOM_Foods = {
 		[ 74839] = F.INEDIBLE,
 		[ 75014] = F.INEDIBLE,
 		[ 85506] = F.INEDIBLE,
+		
+		-- Warlords
+		[111544] = F.BASIC, -- Frostboar Jerky 
+		[115355] = F.BASIC, -- Marbled Clefthoof Steak 
+		[117472] = F.BASIC, -- Grilled Gorgrond Surprise 
+		[117473] = F.BASIC, -- Pickled Elekk Hooves 
+		[117474] = F.BASIC, -- Rylak Sausages 
+		[128219] = F.BASIC, -- Fel-Smoked Ham 
+		[128498] = F.BASIC, -- Fel Eggs and Ham 
+		[104196] = F.BASIC, -- Delectable Ogre Queasine 
+		[111431] = F.BONUS, -- (sta) Hearty Elekk Steak 
+		[111433] = F.BONUS, -- (critstrkrtng) Blackrock Ham 
+		[111434] = F.BONUS, -- (hastertng) Pan-Seared Talbuk 
+		[111436] = F.BONUS, -- (mastrtng) Braised Riverbeast 
+		[111437] = F.BONUS, -- (critstrkrtng) Rylak Crepes 
+		[111438] = F.BONUS, -- Clefthoof Sausages 
+		[118428] = F.BONUS, -- Legion Chili 
+		[130192] = F.BONUS, -- (manargn) Potato Axebeak Stew 
+		[116407] = F.BONUS, -- Slow-Smoked Turkey 
+		[120293] = F.BONUS, -- Lukewarm Yak Roast Broth 		
+		[109131] = F.INEDIBLE, -- Raw Clefthoof Meat 
+		[109132] = F.INEDIBLE, -- Raw Talbuk Meat 
+		[109133] = F.INEDIBLE, -- Rylak Egg 
+		[109134] = F.INEDIBLE, -- Raw Elekk Meat 
+		[109135] = F.INEDIBLE, -- Raw Riverbeast Meat 
+		[109136] = F.INEDIBLE, -- Raw Boar Meat 
+		[128500] = F.INEDIBLE, -- Fel Ham 
+		[128499] = F.INEDIBLE, -- Fel Egg 
+		-- these take both meat and fish. which is it? (tested at least some as meat)
+		[111447] = F.BONUS, -- (sta) Talador Surf and Turf 
+		[111449] = F.BONUS, -- (critstrkrtng) Blackrock Barbecue 
+		[111450] = F.BONUS, -- (hastertng) Frosty Stew 
+		[111452] = F.BONUS, -- (mastrtng) Sleeper Surprise 
+		[111453] = F.BONUS, -- (critstrkrtng) Calamari Crepes 
+		[111454] = F.BONUS, -- Gorgrond Chowder 
+		
+		-- Legion
+		[128840] = F.BASIC, -- Honey-Glazed Ham 
+		[136545] = F.BASIC, -- Skolag Worm Dumpling 
+		[136551] = F.BASIC, -- Elderhorn Jerky 
+		[136552] = F.BASIC, -- Sablehorn Steak Tartare 
+		[139345] = F.BASIC, -- Rat Hands 
+		[140207] = F.BASIC, -- 'Free-Range' Honey-Glazed Ham 
+		[133565] = F.BONUS, -- (critstrkrtng) Leybeque Ribs 
+		[133566] = F.BONUS, -- (hastertng) Suramar Surf and Turf 
+		[133570] = F.BONUS, -- (critstrkrtng) The Hungry Magister 
+		[133571] = F.BONUS, -- (hastertng) Azshari Salad 
+		[133576] = F.BONUS, -- Bear Tartare 
+		[133681] = F.BONUS, -- Crispy Bacon 
+		[133557] = F.BONUS, -- (critstrkrtng) Salt & Pepper Shank 
+		[133564] = F.BONUS, -- Spiced Rib Roast 
+		[138974] = F.BASIC, -- Charcoaled Elderhorn 
+		[140202] = F.BASIC, -- Smoked 'Grass Fed' Elderhorn 
+		[140668] = F.BASIC, -- Meaty Racks of Musken Ribs 
+		[133893] = F.BASIC, -- Darkpit Mushroom Burger 
+		[133979] = F.BASIC, -- Grilled Snail 
+		[140343] = F.BONUS, -- Exotic Squirmy Delight 
+		[140342] = F.BONUS, -- (sta) Lean - Mok'Nathal Shortribs 
+		[140338] = F.BASIC, -- (sta) Mana-Wrapped Goretusk Liver Pie 
+		[140337] = F.BASIC, -- Imported Tough Jerky 
+		[124117] = F.INEDIBLE, -- Lean Shank 
+		[124118] = F.INEDIBLE, -- Fatty Bearsteak 
+		[124119] = F.INEDIBLE, -- Big Gamy Ribs 
+		[124120] = F.INEDIBLE, -- Leyblood 
+		[124121] = F.INEDIBLE, -- Wildfowl Egg 
+		
+		-- unsure of food diet
+		[136555] = F.BASIC, -- Standard Issue Rations 
+		[128849] = F.BASIC, -- Scallion Kimchi 
+		[128839] = F.BASIC, -- Smoked Elderhorn 
+		[141212] = F.BASIC, -- Mana-Poached Egg 
+		[141213] = F.BASIC, -- Candied Sandpiper Eggs 
+		[136556] = F.BASIC, -- Legion Spoiling Ration 
+		[140344] = F.BASIC, -- Preserved Pickled Egg 
+
+		
 	},
 	[FOM_DIET_FISH] = {
 		-- Mists and before
@@ -469,6 +545,64 @@ FOM_Foods = {
 		[ 74865] = F.INEDIBLE,
 		[ 74866] = F.INEDIBLE,
 
+		-- Warlords
+		[111456] = F.BASIC, -- Grilled Saberfish 
+		[124669] = F.BASIC, -- Darkmoon Daggermaw 
+		[111439] = F.BONUS, -- (sta) Steamed Scorpion 
+		[111441] = F.BONUS, -- (critstrkrtng) Grilled Gulper 
+		[111442] = F.BONUS, -- (hastertng) Sturgeon Stew 
+		[111444] = F.BONUS, -- (mastrtng) Fat Sleeper Cakes 
+		[111445] = F.BONUS, -- (critstrkrtng) Fiery Calamari 
+		[111446] = F.BONUS, -- Skulker Chowder 
+		[122343] = F.BONUS, -- (mastrtng) Sleeper Sushi 
+		[122344] = F.BONUS, -- (critstrkrtng) Salty Squid Roll 
+		[122345] = F.BONUS, -- (critstrkrtng) Pickled Eel 
+		[122346] = F.BONUS, -- Jumbo Sea Dog 
+		[122347] = F.BONUS, -- (sta) Whiptail Fillet 
+		[122348] = F.BONUS, -- (hastertng) Buttered Sturgeon 
+		[118416] = F.BONUS, -- Fish Roe 
+		[118424] = F.BONUS, -- Blind Palefish 
+		[114238] = F.BONUS, -- Spiced Barbed Trout 
+		[126934] = F.BONUS, -- Lemon Herb Filet 
+		[109137] = F.INEDIBLE, -- Crescent Saberfish Flesh 
+		[109138] = F.INEDIBLE, -- Jawless Skulker Flesh 
+		[109139] = F.INEDIBLE, -- Fat Sleeper Flesh 
+		[109140] = F.INEDIBLE, -- Blind Lake Sturgeon Flesh 
+		[109141] = F.INEDIBLE, -- Fire Ammonite Tentacle 
+		[109142] = F.INEDIBLE, -- Sea Scorpion Segment 
+		[109143] = F.INEDIBLE, -- Abyssal Gulper Eel Flesh 
+		[109144] = F.INEDIBLE, -- Blackwater Whiptail Flesh 
+		
+		-- Legion
+		[133575] = F.BASIC, -- (manargn) Dried Mackerel Strips 
+		[136546] = F.BASIC, -- Fresh Crawler Salad 
+		[136547] = F.BASIC, -- Deep Sea Queenfish Cakes 
+		[136548] = F.BASIC, -- Dried Barracuda Chips 
+		[138290] = F.BASIC, -- Grilled Mini Rays 
+		[140206] = F.BASIC, -- Grilled 'Wild' Mini Rays 
+		[140302] = F.BASIC, -- Arcway Bisque 
+		[133567] = F.BONUS, -- (mastrtng) Barracuda Mrglgagh 
+		[133568] = F.BONUS, -- Koi-Scented Stormray 
+		[133569] = F.BONUS, -- Drogbar-Style Salmon 
+		[133572] = F.BONUS, -- (mastrtng) Nightborne Delicacy Platter 
+		[133573] = F.BONUS, -- Seed-Battered Fish Plate 
+		[133574] = F.BONUS, -- Fishbrul Special 
+		[133577] = F.BONUS, -- Fighter Chow 
+		[133561] = F.BONUS, -- (hastertng) Deep-Fried Mossgill 
+		[133562] = F.BONUS, -- (mastrtng) Pickled Stormray 
+		[141214] = F.BASIC, -- Mana-Eel Eggs 
+		[138285] = F.BASIC, -- Blue-Tail Bites 
+		[133981] = F.BASIC, -- Raw Cavescale 
+		[135557] = F.BASIC, -- Inferno Curry Crab Legs 
+		[140341] = F.BASIC, -- Wild Poached Emperor Salmon 
+		[124107] = F.INEDIBLE, -- Cursed Queenfish 
+		[124108] = F.INEDIBLE, -- Mossgill Perch 
+		[124109] = F.INEDIBLE, -- Highmountain Salmon 
+		[124110] = F.INEDIBLE, -- Stormray 
+		[124111] = F.INEDIBLE, -- Runescale Koi 
+		[124112] = F.INEDIBLE, -- Black Barracuda 
+		[133607] = F.INEDIBLE, -- Silver Mackerel 
+		
 	},
 	[FOM_DIET_BREAD] = {
 		-- Mists and before
@@ -534,6 +668,48 @@ FOM_Foods = {
 		[ 86069] = F.BONUS,
 		[ 90457] = F.BONUS,
 
+		-- Warlords
+		[113509] = F.CONJURED, -- Conjured Mana Fritter 
+		[115351] = F.BASIC, -- \"Rylak Claws\" 
+		[117469] = F.BASIC, -- Sugar Dusted Choux Twist 
+		[117470] = F.BASIC, -- Thirteen Grain Loaf 
+		[117471] = F.BASIC, -- Cocoa Flatcakes 
+		[112449] = F.BASIC, -- Iron Horde Rations 
+		[116408] = F.BONUS, -- (sta) Herb-Infused Stuffing 
+		[116409] = F.BONUS, -- (critstrkrtng) Gourmet Pumpkin Pie 
+		
+		-- Legion
+		[128835] = F.BASIC, -- Highmountain Fry Bread 
+		[128846] = F.BASIC, -- Tiramisu 
+		[128847] = F.BASIC, -- Lovingly Crafted Carrot Cake 
+		[136549] = F.BASIC, -- Airy Biscuits 
+		[136557] = F.BASIC, -- Passionfruit Tart 
+		[136558] = F.BASIC, -- Carefully Wrapped Cupcake 
+		[136559] = F.BASIC, -- Imp Chip Cookie 
+		[140273] = F.BASIC, -- Honey Croissant 
+		[140275] = F.BASIC, -- Val'sharah Berry Pie 
+		[140299] = F.BASIC, -- Magistrix Mix 
+		[140301] = F.BASIC, -- Mana Biscuit 
+		[128836] = F.BASIC, -- Barley Bread 
+		[128845] = F.BASIC, -- Sweet Rice Cake 
+		[138976] = F.BASIC, -- Stale Thundertotem Rice Cake 
+		[138977] = F.BASIC, -- Thundertotem Rice Cake 
+		[140276] = F.BASIC, -- Dalaran Rice Pudding 
+		[140626] = F.BASIC, -- Frosted Mini-Brans 
+		[132752] = F.BASIC, -- Illidari Rations 
+		[132753] = F.BASIC, -- Legion Rations 
+		
+		-- temp parking for unguessable
+		[140286] = F.BASIC, -- Nightbites 
+		[140296] = F.BASIC, -- Gummy Wyrm 
+		[140297] = F.BASIC, -- Shal'dorice Cream 
+		[140627] = F.BASIC, -- Rockbites 
+		[140679] = F.BASIC, -- NeverMelt Ice Cream 
+		[141206] = F.BASIC, -- Slice of Night Delight 
+		[141207] = F.BASIC, -- J'llah Suspension 
+		[128848] = F.BASIC, -- Roasted Maize 
+		[138987] = F.BASIC, -- Butterhoof Can't Believe It's Butter 
+		
 	},
 	[FOM_DIET_CHEESE] = {
 		-- Mists and before
@@ -561,6 +737,20 @@ FOM_Foods = {
 		[ 12218] = F.BONUS,
 		[ 81401] = F.BONUS,
 		[ 81414] = F.BONUS,
+
+		-- Warlords
+		[115352] = F.BASIC, -- Telmor-Aruuna Hard Cheese 
+		
+		-- Legion
+		[128764] = F.BASIC, -- Moist Azsunian Feta 
+		[136544] = F.BASIC, -- Gjetost Slice 
+		[138978] = F.BASIC, -- High Fiber Gouda 
+		[140205] = F.BASIC, -- 'Fresh' Moist Azsunian Feta 
+		[128763] = F.BASIC, -- Pungent Vrykul Gamalost 
+		[138973] = F.BASIC, -- Pungent and Moldy Gamalost 
+		[138979] = F.BASIC, -- Spicy Sharp Cheddar 
+		[138980] = F.BASIC, -- Butterhoof Singles 
+		[140339] = F.BASIC, -- Hormone Free - Alterac Swiss 
 
 	},
 	[FOM_DIET_FRUIT] = {
@@ -618,6 +808,48 @@ FOM_Foods = {
 		[ 74848] = F.INEDIBLE,
 		[ 74849] = F.INEDIBLE,
 		[ 74850] = F.INEDIBLE,
+		
+		-- Warlords
+		[115353] = F.BASIC, -- Tanaan Sweetmelon 
+		[117454] = F.BASIC, -- Gorgrond Grapes 
+		[117457] = F.BASIC, -- Blood Apples 
+		[113290] = F.BASIC, -- Spirevine Fruit 
+		[112095] = F.BASIC, -- Half-Eaten Banana 
+		[118273] = F.BONUS, -- (hastertng) Perfect O'ruk Orange 
+		[118274] = F.BONUS, -- (mastrtng) Perfect Fuzzy Pear 
+		[118268] = F.BONUS, -- (mastrtng) Fuzzy Pear 
+		[118269] = F.BONUS, -- (critstrkrtng) Greenskin Apple 
+		[118270] = F.BONUS, -- (hastertng) O'ruk Orange 
+		[118271] = F.BONUS, -- Ironpeel Plantain 
+		[118272] = F.BONUS, -- (critstrkrtng) Giant Nagrand Cherry 
+		[118275] = F.BONUS, -- (critstrkrtng) Perfect Nagrand Cherry 
+		[118276] = F.BONUS, -- (critstrkrtng) Perfect Greenskin Apple 
+		[118277] = F.BONUS, -- Perfect Ironpeel Plantain 
+		[116405] = F.BONUS, -- Congealed Cranberry Chutney 
+		[116406] = F.BONUS, -- (hastertng) Twice-Baked Sweet Potato 
+		[111842] = F.BONUS, -- (health) Star Root Tuber 
+		
+		-- Legion
+		[128851] = F.BASIC, -- Roasted Juicycrunch Carrots 
+		[128838] = F.BASIC, -- Foxberries 
+		[128844] = F.BASIC, -- Dried Mango 
+		[136553] = F.BASIC, -- Azsunian Raisins 
+		[136554] = F.BASIC, -- Lingonberry Fruit Leather 
+		[136560] = F.BASIC, -- Condensed Mana Sparks 
+		[138291] = F.BASIC, -- Tart Green Apple 
+		[140184] = F.BASIC, -- Good Batch of Fruit 
+		[140300] = F.BASIC, -- Fresh Arcfruit 
+		[140352] = F.BASIC, -- Dreamberries 
+		[140631] = F.BASIC, -- Nightpear 
+		[128761] = F.BASIC, -- Azsunian Olives 
+		[128837] = F.BASIC, -- Dried Bilberries 
+		[128843] = F.BASIC, -- Azsunian Grapes 
+		[138972] = F.BASIC, -- Bilberry Preserves 
+		[139344] = F.BASIC, -- Mana Banana 
+		[140201] = F.BASIC, -- 'Organic' Azsunian Grapes 
+		[124036] = F.BASIC, -- Juicy Apple 
+		[140355] = F.BASIC, -- (manargn) Laden Apple 
+		
 	},
 	[FOM_DIET_FUNGUS] = {
 		-- Mists and before
@@ -646,5 +878,13 @@ FOM_Foods = {
 		[ 81412] = F.BONUS,
 		[ 27676] = F.INEDIBLE,
 
+		-- Warlords
+		[115354] = F.BASIC, -- Sliced Zangar Buttons 
+		
+		-- Legion
+		[136550] = F.BASIC, -- Deepearth Root Straws 
+		[141208] = F.BASIC, -- Midnight Morel 
+		[113099] = F.BASIC, -- Shadowcap Mushrooms 
+		
 	},
 };
