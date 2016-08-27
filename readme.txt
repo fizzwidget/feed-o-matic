@@ -42,8 +42,10 @@ CAVEATS, ETC.:
 ------------------------------------------------------
 VERSION HISTORY
 
-v. 7.0 - 2016/08/XX - Dedicated to Mania of www.wow-petopia.com
+v. 7.0 - 2016/08/27 - Dedicated to Mania of www.wow-petopia.com
 - Updated to support WoW Patch 7.0 and Legion. 
+- Added Legion foods. Many of these are untested guesses for food category -- please send feedback if you see any issues.
+- Added Warlords of Draenor foods. Better late than never?
 - Redesigned to no longer use LibPeriodicTable. (Outsourcing list maintenance to a third-party library only meant I had to be the one updating the library... which is more complicated than keeping my own list.)
 	- The option to avoid foods used as Cooking ingredients is disabled; it may return in a future version.
 - The Feed Pet button now shows the number remaining in your inventory for the selected food.
