@@ -887,4 +887,50 @@ FOM_Foods = {
 		[113099] = F.BASIC, -- Shadowcap Mushrooms 
 		
 	},
+	[FOM_DIET_MECH] = {
+		-- Engineering Parts up through Warlords... most of them just a guess for now.
+		[  4357] = F.INEDIBLE, -- Rough Blasting Powder 
+		[  4359] = F.INEDIBLE, -- Handful of Copper Bolts 
+		[  4364] = F.INEDIBLE, -- Coarse Blasting Powder 
+		[  4371] = F.INEDIBLE, -- Bronze Tube 
+		[  4375] = F.INEDIBLE, -- Whirring Bronze Gizmo 
+		[  4377] = F.INEDIBLE, -- Heavy Blasting Powder 
+		[  4382] = F.INEDIBLE, -- Bronze Framework 
+		[  4387] = F.INEDIBLE, -- Iron Strut 
+		[  4389] = F.INEDIBLE, -- Gyrochronatom 
+		[  4404] = F.INEDIBLE, -- Silver Contact 
+		[  7191] = F.INEDIBLE, -- Fused Wiring 
+		[ 10505] = F.INEDIBLE, -- Solid Blasting Powder 
+		[ 10558] = F.INEDIBLE, -- Gold Power Core 
+		[ 10559] = F.INEDIBLE, -- Mithril Tube 
+		[ 10560] = F.INEDIBLE, -- Unstable Trigger 
+		[ 10561] = F.INEDIBLE, -- Mithril Casing 
+		[ 15992] = F.INEDIBLE, -- Dense Blasting Powder 
+		[ 15994] = F.INEDIBLE, -- Thorium Widget 
+		[ 16000] = F.INEDIBLE, -- Thorium Tube 
+		[ 16006] = F.INEDIBLE, -- Delicate Arcanite Converter 
+		[ 18631] = F.INEDIBLE, -- Truesilver Transformer 
+		[ 23781] = F.INEDIBLE, -- Elemental Blasting Powder 
+		[ 23782] = F.INEDIBLE, -- Fel Iron Casing 
+		[ 23783] = F.INEDIBLE, -- Handful of Fel Iron Bolts 
+		[ 23784] = F.INEDIBLE, -- Adamantite Frame 
+		[ 23785] = F.INEDIBLE, -- Hardened Adamantite Tube 
+		[ 23786] = F.INEDIBLE, -- Khorium Power Core 
+		[ 23787] = F.INEDIBLE, -- Felsteel Stabilizer 
+		[ 32423] = F.INEDIBLE, -- Icy Blasting Primers 
+		[ 39681] = F.INEDIBLE, -- Handful of Cobalt Bolts 
+		[ 39682] = F.INEDIBLE, -- Overcharged Capacitor 
+		[ 39683] = F.INEDIBLE, -- Froststeel Tube 
+		[ 39690] = F.INEDIBLE, -- Volatile Blasting Trigger 
+		[ 60224] = F.INEDIBLE, -- Handful of Obsidium Bolts 
+		[ 67749] = F.INEDIBLE, -- Electrified Ether 
+		[ 77467] = F.INEDIBLE, -- Ghost Iron Bolts 
+		[ 77468] = F.INEDIBLE, -- High-Explosive Gunpowder 
+		[ 90146] = F.INEDIBLE, -- Tinker's Kit 
+		[ 94113] = F.INEDIBLE, -- Jard's Peculiar Energy Source 
+		[111366] = F.INEDIBLE, -- Gearspring Parts 
+		
+		-- Plus others that have been tested
+		[   814] = F.INEDIBLE, -- Flask of Oil
+	},
 };
