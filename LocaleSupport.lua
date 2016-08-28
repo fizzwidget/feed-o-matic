@@ -6,8 +6,8 @@
 -- Note: strings which are the same as in the enUS version needn't be localized; they can be commented out.
 ------------------------------------------------------
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
--- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything. Except Mechanical Bits.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "Meat"
 FOM_DIET_FISH					= "Fish"
@@ -59,7 +59,7 @@ FOM_MONKEY						= "Monkey"                  -- Cataclysm
 
 if (GetLocale() == "ptBR") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "Carne"
@@ -114,7 +114,7 @@ end
 
 if (GetLocale() == "frFR") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "Viande"
@@ -169,7 +169,7 @@ end
 
 if (GetLocale() == "deDE") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "Fleisch"
@@ -224,7 +224,7 @@ end
 
 if (GetLocale() == "esES" or GetLocale() == "esMX") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "Carne"
@@ -279,7 +279,7 @@ end
 
 if (GetLocale() == "ruRU") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "Мясо"
@@ -390,7 +390,7 @@ end
 
 if (GetLocale() == "koKR") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "고기"
@@ -440,7 +440,7 @@ end
 
 if (GetLocale() == "zhTW") then
 
--- Diet names. These should be the six diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
 -- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything.)
 -- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
 FOM_DIET_MEAT					= "肉"
