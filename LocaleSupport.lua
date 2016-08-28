@@ -15,6 +15,7 @@ FOM_DIET_BREAD					= "Bread"
 FOM_DIET_CHEESE					= "Cheese"
 FOM_DIET_FRUIT					= "Fruit"
 FOM_DIET_FUNGUS					= "Fungus"
+FOM_DIET_MECH					= "Mechanical bits"
 
 -- Beast family names; we use these to provide optional pet-specific feeding emotes (see FeedOMatic_Emotes.lua)
 FOM_BAT							= "Bat"
