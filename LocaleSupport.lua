@@ -18,43 +18,130 @@ FOM_DIET_FUNGUS					= "Fungus"
 FOM_DIET_MECH					= "Mechanical bits"
 
 -- Beast family names; we use these to provide optional pet-specific feeding emotes (see FeedOMatic_Emotes.lua)
+FOM_BASILISK					= "Basilisk"				-- Mists
 FOM_BAT							= "Bat"
 FOM_BEAR						= "Bear"
+FOM_BEETLE						= "Beetle"                  -- Cataclysm
 FOM_BIRD_OF_PREY				= "Bird of Prey"        	-- WotLK
 FOM_BOAR						= "Boar"                	
 FOM_CARRION_BIRD				= "Carrion Bird"        	
 FOM_CAT							= "Cat"                 	
 FOM_CHIMAERA					= "Chimaera"            	-- WotLK exotic
+FOM_CLEFTHOOF					= "Clefthoof"				-- Warlords
 FOM_CORE_HOUND					= "Core Hound"          	-- WotLK exotic
 FOM_CRAB						= "Crab"                	
+FOM_CRANE						= "Crane"					-- Mists
 FOM_CROCOLISK					= "Crocolisk"           	
 FOM_DEVILSAUR					= "Devilsaur"           	-- WotLK exotic
+FOM_DIREHORN					= "Direhorn"				-- Warlords
+FOM_DOG							= "Dog"                     -- Cataclysm
 FOM_DRAGONHAWK					= "Dragonhawk"          	-- BC
+FOM_FOX							= "Fox"                     -- Cataclysm
+FOM_GOAT						= "Goat"					-- Mists
 FOM_GORILLA						= "Gorilla"             	
 FOM_HYENA						= "Hyena"               	
+FOM_HYDRA						= "Hydra"					-- Warlords
+FOM_MECHANICAL					= "Mechanical"				-- Legion special
+FOM_MONKEY						= "Monkey"                  -- Cataclysm
 FOM_MOTH						= "Moth"                	-- WotLK
 FOM_NETHER_RAY					= "Nether Ray"          	-- BC
+FOM_OXEN						= "Oxen"					-- Legion
+FOM_PORCUPINE					= "Porcupine"				-- Mists
+FOM_QUILEN						= "Quilen"					-- Mists exotic
 FOM_RAPTOR						= "Raptor"              	
 FOM_RAVAGER						= "Ravager"             	-- BC
-FOM_RHINO						= "Rhino"               	-- WotLK exotic
+FOM_RIVERBEAST					= "Riverbeast"				-- Warlords
+FOM_RYLAK						= "Rylak"					-- Warlords
+FOM_SCALEHIDE					= "Scalehide"				-- Legion
 FOM_SCORPID						= "Scorpid"             	
 FOM_SERPENT						= "Serpent"             	-- BC
+FOM_SHALE_SPIDER				= "Shale Spider"            -- Cataclysm exotic
 FOM_SILITHID					= "Silithid"            	-- WotLK exotic
 FOM_SPIDER						= "Spider"              	
 FOM_SPIRIT_BEAST				= "Spirit Beast"        	-- WotLK exotic
 FOM_SPOREBAT					= "Sporebat"            	-- BC
+FOM_STAG						= "Stag"					-- Warlords
 FOM_TALLSTRIDER					= "Tallstrider"         	
 FOM_TURTLE						= "Turtle"              	
 FOM_WARP_STALKER				= "Warp Stalker"			-- BC
 FOM_WASP						= "Wasp"                	-- WotLK
+FOM_WATER_STRIDER				= "Water Strider"			-- Mists exotic
 FOM_WIND_SERPENT				= "Wind Serpent"        	
 FOM_WOLF						= "Wolf"                	
 FOM_WORM						= "Worm"                	-- WotLK exotic
-FOM_DOG							= "Dog"                     -- Cataclysm
-FOM_BEETLE						= "Beetle"                  -- Cataclysm
-FOM_SHALE_SPIDER				= "Shale Spider"            -- Cataclysm exotic
-FOM_FOX							= "Fox"                     -- Cataclysm
-FOM_MONKEY						= "Monkey"                  -- Cataclysm
+
+
+------------------------------------------------------
+
+if (GetLocale() == "itIT") then
+
+-- Diet names. These should be the seven possible diets returned from GetPetFoodTypes() and shown in the Pet tab of the character window (when mousing over the food icon). 
+-- (Want to get them all nice and quick for your localization? Go tame a bear or boar... they eat anything. Except Mechanical Bits.)
+-- THESE STRINGS MUST BE LOCALIZED for Feed-O-Matic to work properly in other locales.
+FOM_DIET_MEAT					= "Carne"
+FOM_DIET_FISH					= "Pesce"
+FOM_DIET_BREAD					= "Pane"
+FOM_DIET_CHEESE					= "Formaggio"
+FOM_DIET_FRUIT					= "Frutta"
+FOM_DIET_FUNGUS					= "Funghi"
+-- FOM_DIET_MECH					= "Mechanical bits" -- unknown
+
+-- Beast family names; we use these to provide optional pet-specific feeding emotes (see FeedOMatic_Emotes.lua)
+FOM_BASILISK					= "Basilisco"				-- Mists
+FOM_BAT							= "Pipistrello"
+FOM_BEAR						= "Orso"
+FOM_BEETLE						= "Scarabeo"                  -- Cataclysm
+FOM_BIRD_OF_PREY				= "Rapace"        	-- WotLK
+FOM_BOAR						= "Cinghiale"                	
+FOM_CARRION_BIRD				= "Mangiacarogne"        	
+FOM_CAT							= "Felino"                 	
+FOM_CHIMAERA					= "Chimera"            	-- WotLK exotic
+FOM_CLEFTHOOF					= "Mammuceronte"				-- Warlords
+FOM_CORE_HOUND					= "Segugio del Nucleo"          	-- WotLK exotic
+FOM_CRAB						= "Granchio"                	
+FOM_CRANE						= "Gru"					-- Mists
+FOM_CROCOLISK					= "Crocolisco"           	
+FOM_DEVILSAUR					= "Gigantosauro"           	-- WotLK exotic
+FOM_DIREHORN					= "Cornofurente"				-- Warlords
+FOM_DOG							= "Cane"                     -- Cataclysm
+FOM_DRAGONHAWK					= "Dragofalco"          	-- BC
+FOM_FOX							= "Volpe"                     -- Cataclysm
+FOM_GOAT						= "Caprone"					-- Mists
+-- FOM_GORILLA						= "Gorilla"	-- not translated in itIT
+FOM_HYENA						= "Iena"               	
+FOM_HYDRA						= "Idra"					-- Warlords
+FOM_MECHANICAL					= "Unità Meccanica"				-- Legion special
+FOM_MONKEY						= "Scimmia"                  -- Cataclysm
+FOM_MOTH						= "Falena"                	-- WotLK
+FOM_NETHER_RAY					= "Manta Fatua"          	-- BC
+FOM_OXEN						= "Yak"					-- Legion
+FOM_PORCUPINE					= "Porcospino"				-- Mists
+-- FOM_QUILEN						= "Quilen"					-- Mists exotic, not translated in itIT
+-- FOM_RAPTOR						= "Raptor" -- not translated in itIT
+FOM_RAVAGER						= "Devastatore"             	-- BC
+FOM_RIVERBEAST					= "Bestia dei Fiumi"				-- Warlords
+-- FOM_RYLAK						= "Rylak"					-- Warlords, not translated in itIT
+FOM_SCALEHIDE					= "Scagliamanto"				-- Legion
+FOM_SCORPID						= "Scorpide"             	
+FOM_SERPENT						= "Serpente"             	-- BC
+FOM_SHALE_SPIDER				= "Ragno Roccioso"            -- Cataclysm exotic
+FOM_SILITHID					= "Silitide"            	-- WotLK exotic
+FOM_SPIDER						= "Ragno"              	
+FOM_SPIRIT_BEAST				= "Bestia Eterea"        	-- WotLK exotic
+FOM_SPOREBAT					= "Sporofago"            	-- BC
+FOM_STAG						= "Cervo"					-- Warlords
+FOM_TALLSTRIDER					= "Zampalunga"         	
+FOM_TURTLE						= "Tartaruga"              	
+FOM_WARP_STALKER				= "Segugio Distorcente"			-- BC
+FOM_WASP						= "Vespa"                	-- WotLK
+FOM_WATER_STRIDER				= "Gerride"			-- Mists exotic
+FOM_WIND_SERPENT				= "Serpente Volante"        	
+FOM_WOLF						= "Lupo"                	
+FOM_WORM						= "Verme"                	-- WotLK exotic
+
+end
+
+------------------------------------------------------
 
 ------------------------------------------------------
 
@@ -93,7 +180,6 @@ FOM_MOTH						= "Mariposa"                	-- WotLK
 FOM_NETHER_RAY					= "Arraia Etérea"          	-- BC
 -- FOM_RAPTOR						= "Raptor"              	-- same as enUS
 FOM_RAVAGER						= "Assolador"             	-- BC
-FOM_RHINO						= "Rinoceronte"               	-- WotLK exotic
 FOM_SCORPID						= "Escorpídeo"             	
 FOM_SERPENT						= "Serpente"             	-- BC
 FOM_SHALE_SPIDER				= "Aranha Xistosa"            -- Cataclysm exotic
@@ -108,6 +194,22 @@ FOM_WASP						= "Vespa"                	-- WotLK
 FOM_WIND_SERPENT				= "Serpente Alada"        	
 FOM_WOLF						= "Lobo"                	
 FOM_WORM						= "Verme"                	-- WotLK exotic
+
+FOM_BASILISK					= "Basilisco"				-- Mists
+FOM_CLEFTHOOF					= "Fenoceronte"				-- Warlords
+FOM_CRANE						= "Garça"					-- Mists
+FOM_DIREHORN					= "Escornante"				-- Warlords
+FOM_GOAT						= "Bode"					-- Mists
+FOM_HYDRA						= "Hidra"					-- Warlords
+FOM_MECHANICAL					= "Mecânico"				-- Legion special
+FOM_OXEN						= "Boi"						-- Legion
+FOM_PORCUPINE					= "Porco-espinho"			-- Mists
+FOM_QUILEN						= "Quílen"					-- Mists exotic
+FOM_RIVERBEAST					= "Fera-do-rio"				-- Warlords
+-- FOM_RYLAK						= "Rylak"					-- Warlords, not translated in ptBR
+FOM_SCALEHIDE					= "Courescama"				-- Legion
+FOM_STAG						= "Cervo"					-- Warlords
+FOM_WATER_STRIDER				= "Caminhante das Águas"	-- Mists exotic
 
 end
 
@@ -154,7 +256,6 @@ FOM_CHIMAERA					= "Chimère"					-- WotLK exotic
 FOM_CORE_HOUND					= "Chien du Magma"			-- WotLK exotic
 FOM_DEVILSAUR					= "Diablosaure"				-- WotLK exotic
 FOM_MOTH						= "Phalène"					-- WotLK
-FOM_RHINO						= "Rhinocéros"				-- WotLK exotic
 FOM_SILITHID					= "Silithide"				-- WotLK exotic
 FOM_SPIRIT_BEAST				= "Esprit de bête"			-- WotLK exotic
 FOM_WORM						= "Ver"						-- WotLK exotic
@@ -163,6 +264,22 @@ FOM_BEETLE						= "Hanneton"                -- Cataclysm
 FOM_SHALE_SPIDER				= "Araignée de schiste"     -- Cataclysm exotic
 FOM_FOX							= "Renard"                  -- Cataclysm
 FOM_MONKEY						= "Singe"                   -- Cataclysm
+
+FOM_BASILISK					= "Basilic"					-- Mists
+FOM_CLEFTHOOF					= "Sabot-fourchu"			-- Warlords
+FOM_CRANE						= "Grue"					-- Mists
+FOM_DIREHORN					= "Navrecorne"				-- Warlords
+FOM_GOAT						= "Chèvre"					-- Mists
+FOM_HYDRA						= "Hydre"					-- Warlords
+FOM_MECHANICAL					= "Mécanique"				-- Legion special
+FOM_OXEN						= "Bovin"					-- Legion
+FOM_PORCUPINE					= "Porc-épic"				-- Mists
+-- FOM_QUILEN						= "Quilen"					-- Mists exotic, not translated in frFR
+FOM_RIVERBEAST					= "Potamodonte"				-- Warlords
+-- FOM_RYLAK						= "Rylak"					-- Warlords, not translated in frFR
+FOM_SCALEHIDE					= "Peau écailleuse"			-- Legion
+FOM_STAG						= "Cerf"					-- Warlords
+FOM_WATER_STRIDER				= "Trotteur aquatique"			-- Mists exotic
 
 end
 
@@ -209,7 +326,6 @@ FOM_CHIMAERA					= "Schimäre"				-- WotLK exotic
 FOM_CORE_HOUND					= "Kernhund"				-- WotLK exotic
 FOM_DEVILSAUR					= "Teufelssaurier"			-- WotLK exotic
 FOM_MOTH						= "Motte"					-- WotLK
-FOM_RHINO						= "Rhinozeros"				-- WotLK exotic
 --	FOM_SILITHID				= "Silithid"				-- WotLK exotic; same as enUS
 FOM_SPIRIT_BEAST				= "Geisterbestie"			-- WotLK exotic
 FOM_WORM						= "Wurm"					-- WotLK exotic
@@ -218,6 +334,22 @@ FOM_BEETLE						= "Käfer"                -- Cataclysm
 FOM_SHALE_SPIDER				= "Schieferspinne"     -- Cataclysm exotic
 FOM_FOX							= "Fuchs"                  -- Cataclysm
 FOM_MONKEY						= "Affe"                   -- Cataclysm
+
+-- FOM_BASILISK					= "Basilisk"				-- Mists, not translated in deDE
+FOM_CLEFTHOOF					= "Grollhuf"				-- Warlords
+FOM_CRANE						= "Kranich"					-- Mists
+FOM_DIREHORN					= "Terrorhorn"				-- Warlords
+FOM_GOAT						= "Ziege"					-- Mists
+-- FOM_HYDRA						= "Hydra"					-- Warlords, not translated in deDE
+FOM_MECHANICAL					= "Mechanisch"				-- Legion special
+FOM_OXEN						= "Ochse"					-- Legion
+FOM_PORCUPINE					= "Stachelschwein"			-- Mists
+FOM_QUILEN						= "Qilen"					-- Mists exotic
+FOM_RIVERBEAST					= "Flussbestie"				-- Warlords
+-- FOM_RYLAK						= "Rylak"					-- Warlords, not translated in deDE
+FOM_SCALEHIDE					= "Schuppenbalg"			-- Legion
+FOM_STAG						= "Hirsch"					-- Warlords
+FOM_WATER_STRIDER				= "Wasserschreiter"			-- Mists exotic
 
 end
 
@@ -264,7 +396,6 @@ FOM_CHIMAERA					= "Quimera"					-- WotLK exotic
 FOM_CORE_HOUND					= "Can del Núcleo"			-- WotLK exotic
 FOM_DEVILSAUR					= "Demosaurio"				-- WotLK exotic
 FOM_MOTH						= "Palomilla"				-- WotLK
-FOM_RHINO						= "Rinoceronte"				-- WotLK exotic
 FOM_SILITHID					= "Silítido"				-- WotLK exotic
 FOM_SPIRIT_BEAST				= "Bestia espíritu"			-- WotLK exotic
 FOM_WORM						= "Gusano"					-- WotLK exotic
@@ -273,6 +404,22 @@ FOM_BEETLE						= "Alfazaque"                -- Cataclysm
 FOM_SHALE_SPIDER				= "Araña de esquisto"     -- Cataclysm exotic
 FOM_FOX							= "Zorro"                  -- Cataclysm
 FOM_MONKEY						= "Mono"                   -- Cataclysm
+
+FOM_BASILISK					= "Basilisco"				-- Mists
+FOM_CLEFTHOOF					= "Uñagrieta"				-- Warlords
+FOM_CRANE						= "Grulla"					-- Mists
+FOM_DIREHORN					= "Cuernoatroz"				-- Warlords
+FOM_GOAT						= "Cabra"					-- Mists
+FOM_HYDRA						= "Hidra"					-- Warlords
+FOM_MECHANICAL					= "Máquina"					-- Legion special
+FOM_OXEN						= "Buey"					-- Legion
+FOM_PORCUPINE					= "Puercoespín"				-- Mists
+-- FOM_QUILEN						= "Quilen"					-- Mists exotic, not translated in es
+FOM_RIVERBEAST					= "Bestia fluvial"			-- Warlords
+-- FOM_RYLAK						= "Rylak"					-- Warlords, not translated in es
+FOM_SCALEHIDE					= "Pielescama"				-- Legion
+FOM_STAG						= "Venado"					-- Warlords
+FOM_WATER_STRIDER				= "Zancudo acuático"			-- Mists exotic
 
 end
 
@@ -319,7 +466,6 @@ FOM_CHIMAERA					= "Химера"					-- WotLK exotic
 FOM_CORE_HOUND					= "Пес недр"				-- WotLK exotic
 FOM_DEVILSAUR					= "Девизавр"				-- WotLK exotic
 FOM_MOTH						= "Мотылек"					-- WotLK exotic
-FOM_RHINO						= "Люторог"					-- WotLK exotic
 FOM_SILITHID					= "Силитид"					-- WotLK exotic
 FOM_SPIRIT_BEAST				= "Дух зверя"				-- WotLK exotic
 FOM_WORM						= "Червь"					-- WotLK exotic
@@ -329,61 +475,21 @@ FOM_SHALE_SPIDER				= "Сланцевый паук"     -- Cataclysm exotic
 FOM_FOX							= "Лисица"                  -- Cataclysm
 FOM_MONKEY						= "Обезьяна"                   -- Cataclysm
 
--- From here on down, the localized strings are just for readability; they don't affect whether Feed-O-Matic works.
-FOM_BUTTON_TOOLTIP1				= "<Левык-Клик для кормление питомца %s>"
-FOM_BUTTON_TOOLTIP1_FALLBACK	= "<Alt-Левык-Клик для кормление питомца %s>"
-FOM_BUTTON_TOOLTIP2				= "<Правый-Клик для настроек Feed-O-Matic>"
-
--- Used in tooltips to indicate food quality.
-FOM_QUALITY_UNDER				= "%s больше это не нравится."
-FOM_QUALITY_WILL				= "%s будет этим питаться."
-FOM_QUALITY_LIKE				= "%s нравится этим питаться."
-FOM_QUALITY_LOVE				= "%s обожает этим питаться."
-
--- User-visible errors
-FOM_ERROR_NO_FOOD				= "Не удалось найти каких-либо продуктов питания в ваших мешках для %s."
-FOM_ERROR_NO_FOOD_NO_FALLBACK	= "Не удалось найти каких-либо продуктов питания в ваших мешках для %s, вы не указали Feed-O-Matic избегать данное положение."
-FOM_FALLBACK_MESSAGE			= "Удерживайте Alt когда нажимаете кнопку кормления питомца или кнопку для кормления %s."
-
--- Feeding status messages
-FOM_FEEDING_EAT					= "Кормление питомца, %s ест %s..."
-FOM_FEEDING_FEED				= "кормит питомца, %s ест %s. "
-
--- Options panel
-FOM_OPTIONS_SUBTEXT				= "Кормление вашего питомца с помощью F-O-M, кликните по иконке счастья питомца, назначте клавишу для кормления в меню назначения клавиш, или добавте макрос '/click FOM_FeedButton'."
-
-FOM_OPTIONS_TOOLTIP				= "Отображать качетво пищи в подсказках"
-FOM_OPTIONS_LOW_LVL_1ST			= "Предпочтительнее пища низкого-уровня"
-FOM_OPTIONS_AVOID_QUEST			= "Исключать пищу котораю нужна для заданий"
-                            	                            	
-FOM_OPTIONS_FEED_NOTIFY 		= "Извещать при кормлении:"
-FOM_OPTIONS_NOTIFY_EMOTE		= "Как эмоцию"
-FOM_OPTIONS_NOTIFY_TEXT			= "В окно чата"
-FOM_OPTIONS_NOTIFY_NONE			= "Не извещать"
-
-FOM_OPTIONS_FOODS_TITLE			= "Преимущество питания"
-FOM_OPTIONS_FOODS_TEXT			= "Ниже снимите отметку с характерной пищи (или с категории пищи) чтобы предотвратить кормления ею вашего питомца. Будет использоваться пищу из категории ближе к верхней части списка."
-
-FOM_OPTIONS_FOODS_NAME			= "Пища"
-FOM_OPTIONS_FOODS_COOKING		= "Продукты кулинарии"
-
-FOM_OPTIONS_FOODS_CONJURED		= "Сотворенная пища"
-FOM_OPTIONS_FOODS_CONJ_COMBO	= "Сотворенная пища восстановления маны"
-FOM_OPTIONS_FOODS_BASIC			= "Обычная пища"
-FOM_OPTIONS_FOODS_COMBO			= "Пища восстановления маны"
-FOM_OPTIONS_FOODS_BONUS			= "“Сытость” пища"
-FOM_OPTIONS_FOODS_INEDIBLE		= "Сырая пища"
-
-FOM_OPTIONS_FOODS_ONLY_PET		= "Показывать только ту пищу которую будет кушать %s"
-FOM_OPTIONS_FOODS_ONLY_LVL		= "Показывать только ту пищу которую будет кушать питомец в соответствии с моим уровнем"
-FOM_OPTIONS_FOODS_ONLY_INV		= "Показывать только ту пищу которая в моём инвенторе"
-
-FOM_DIFFICULTY_HEADER			= "Статус рецепта:"                            	
-FOM_DIFFICULTY_1   				= "Обычное"
-FOM_DIFFICULTY_2   				= "Легкий"
-FOM_DIFFICULTY_3				= "Средний"
-FOM_DIFFICULTY_4				= "Сложность"
-FOM_DIFFICULTY_5	   			= "Неизвестный"
+FOM_BASILISK					= "Василиск"				-- Mists
+FOM_CLEFTHOOF					= "Копытень"				-- Warlords
+FOM_CRANE						= "Журавль"					-- Mists
+FOM_DIREHORN					= "Дикорог"					-- Warlords
+FOM_GOAT						= "Козел"					-- Mists
+FOM_HYDRA						= "Гидра"					-- Warlords
+FOM_MECHANICAL					= "Механизм"				-- Legion special
+FOM_OXEN						= "Быки"					-- Legion
+FOM_PORCUPINE					= "Дикобраз"				-- Mists
+FOM_QUILEN						= "Цийлинь"					-- Mists exotic
+FOM_RIVERBEAST					= "Речное чудище"			-- Warlords
+FOM_RYLAK						= "Рилак"					-- Warlords
+FOM_SCALEHIDE					= "Чешуйчатая Шкура"		-- Legion
+FOM_STAG						= "Олень"					-- Warlords
+FOM_WATER_STRIDER				= "Водный долгоног"			-- Mists exotic
 
 end
 
@@ -420,7 +526,6 @@ FOM_MOTH						= "나방"                	-- WotLK exotic
 FOM_NETHER_RAY					= "황천의 가오리"          	-- BC
 FOM_RAPTOR						= "랩터"              	
 FOM_RAVAGER						= "갈퀴발톱"             	-- BC
-FOM_RHINO						= "코뿔소"               	-- WotLK exotic
 FOM_SCORPID						= "전갈"             	
 FOM_SERPENT						= "살무사"             	-- BC
 FOM_SILITHID					= "실리시드"            	-- WotLK exotic
@@ -433,7 +538,27 @@ FOM_WARP_STALKER				= "차원의 추적자"			-- BC
 FOM_WASP						= "말벌"                	-- WotLK
 FOM_WIND_SERPENT				= "천둥매"        	
 FOM_WOLF						= "늑대"                	
-FOM_WORM						= "벌레"                	-- WotLK exotic
+FOM_WORM						= "벌레"					-- WotLK exotic
+FOM_SHALE_SPIDER				= "혈암거미"				-- Cataclysm exotic
+FOM_MONKEY						= "원숭이"				-- Cataclysm
+FOM_FOX							= "여우"					-- Cataclysm
+FOM_DOG							= "개"					-- Cataclysm
+FOM_BEETLE						= "딱정벌레"				-- Cataclysm
+FOM_BASILISK					= "바실리스크"				-- Mists
+FOM_CLEFTHOOF					= "갈래발굽"				-- Warlords
+FOM_CRANE						= "학"					-- Mists
+FOM_DIREHORN					= "공포뿔"				-- Warlords
+FOM_GOAT						= "염소"					-- Mists
+FOM_HYDRA						= "히드라"				-- Warlords
+FOM_MECHANICAL					= "기계"					-- Legion special
+FOM_OXEN						= "소"					-- Legion
+FOM_PORCUPINE					= "호저"					-- Mists
+FOM_QUILEN						= "기렌"					-- Mists exotic
+FOM_RIVERBEAST					= "강물하마"				-- Warlords
+FOM_RYLAK						= "라일라크"				-- Warlords
+FOM_SCALEHIDE					= "비늘가죽"				-- Legion
+FOM_STAG						= "순록"					-- Warlords
+FOM_WATER_STRIDER				= "소금쟁이"				-- Mists exotic
 
 end
 
@@ -471,9 +596,38 @@ FOM_WIND_SERPENT				= "風蛇"
 FOM_WOLF						= "狼"                    
 FOM_DRAGONHAWK					= "龍鷹"					-- BC
 FOM_NETHER_RAY					= "虛空鰭刺"				-- BC
-FOM_RAVAGER						= "破壞者"					-- BC
+FOM_RAVAGER						= "破壞者"				-- BC
 FOM_SERPENT						= "毒蛇"					-- BC
 FOM_SPOREBAT					= "孢子蝙蝠"				-- BC
 FOM_WARP_STALKER				= "扭曲行者"				-- BC
+FOM_WORM						= "蠕虫"					-- WotLK exotic
+FOM_SPIRIT_BEAST				= "灵魂兽"        		-- WotLK exotic
+FOM_WASP						= "巨蜂"                	-- WotLK
+FOM_SILITHID					= "异种虫"            	-- WotLK exotic
+FOM_MOTH						= "蛾子"                	-- WotLK exotic
+FOM_DEVILSAUR					= "魔暴龙"           	-- WotLK exotic
+FOM_CHIMAERA					= "奇美拉"            	-- WotLK exotic
+FOM_CORE_HOUND					= "熔岩犬"        	  	-- WotLK exotic
+FOM_BIRD_OF_PREY				= "猛禽"      		  	-- WotLK
+FOM_SHALE_SPIDER				= "页岩蛛"				-- Cataclysm exotic
+FOM_MONKEY						= "猴子"					-- Cataclysm
+FOM_FOX							= "狐狸"					-- Cataclysm
+FOM_DOG							= "狗"					-- Cataclysm
+FOM_BEETLE						= "甲虫"					-- Cataclysm
+FOM_BASILISK					= "石化蜥蜴"				-- Mists
+FOM_CLEFTHOOF					= "裂蹄牛"				-- Warlords
+FOM_CRANE						= "鹤"					-- Mists
+FOM_DIREHORN					= "恐角龙"				-- Warlords
+FOM_GOAT						= "山羊"					-- Mists
+FOM_HYDRA						= "九头蛇"				-- Warlords
+FOM_MECHANICAL					= "机械"					-- Legion special
+FOM_OXEN						= "牛"					-- Legion
+FOM_PORCUPINE					= "箭猪"					-- Mists
+FOM_QUILEN						= "魁麟"					-- Mists exotic
+FOM_RIVERBEAST					= "淡水兽"				-- Warlords
+FOM_RYLAK						= "双头飞龙"				-- Warlords
+FOM_SCALEHIDE					= "鳞甲类"				-- Legion
+FOM_STAG						= "雄鹿"					-- Warlords
+FOM_WATER_STRIDER				= "水黾"					-- Mists exotic
 
 end
