@@ -42,6 +42,10 @@ CAVEATS, ETC.:
 ------------------------------------------------------
 VERSION HISTORY
 
+v. 7.0.1 - 2016/08/29
+- Added support for Mechanical pets in 7.0/Legion. The "mechanical bits" food list is partly guesswork -- please send feedback if you see any issues.
+- Updated locale support: You can now add custom emotes in FeedOMatic_Emotes.lua for Mists, Warlords, and Legion beasts, and in all WoW languages including Chinese, Korean, and Italian.
+
 v. 7.0 - 2016/08/27 - Dedicated to Mania of www.wow-petopia.com
 - Updated to support WoW Patch 7.0 and Legion. 
 - Added Legion foods. Many of these are untested guesses for food category -- please send feedback if you see any issues.
