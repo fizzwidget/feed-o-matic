@@ -22,8 +22,8 @@ Makes feeding your pet quick, easy, and fun:
 Helps you manage all the pet food in your inventory:
 	- Keeps track of which foods your pet likes more, and prioritizes "better" foods when choosing what to feed the pet. Also makes sure not to use foods your pet has "outgrown" or foods not appropriate to your species of pet.
 	- If you're on a quest to collect several of a certain item which also happens to be something your pet likes to eat, Feed-O-Matic can avoid consuming it. (Unless you're carrying more than is needed for the quest or there's nothing else for your pet to eat.)
-	- Feed-O-Matic can keep track of what foods are used by the Cooking recipes you know and avoid choosing food you'd rather cook; this behavior can be customized based on the difficulty of the recipies (so, for example, you can either save all cookable food or only save the foods most likely to increase your Cooking skill).
-	- If you'd prefer to save the better food (that is, those which provide a "well fed" bonus or other effect when eaten) for yourself, Feed-O-Matic can also avoid it when looking for pet food.
+	- Manages four major categories of foods: Conjured food (free if you befriend a mage), Basic food (just restores health; found at many vendors), "Well Fed" food (has bonus effects when you eat it; often comes from cooking), and Raw food (things that aren't edible for you, but are for your pet; often used as cooking ingredients). Feed-O-Matic looks for food in this order (Conjured, Basic, Well Fed, then Raw), to prioritize the food that's cheapest (both in terms of cost to you and potential usefulness). You can use the Feed-O-Matic Options panel to avoid feeding your pet entire categories of food, or to avoid just specific foods.
+	- Feed-O-Matic keeps track of what foods are used by Cooking recipes. The Feed-O-Matic Options panel shows which foods are ingredients for which recipes, so you can choose to avoid feeding things to your pet that you'd rather cook for yourself.
 	- All other things being equal, Feed-O-Matic will try to pick foods from smaller stacks, making sure your food supply doesn't take up all your bag space. When your bags get close to full, Feed-O-Matic will start ignoring other criteria and always choosing the smallest stack so that you won't run out of inventory sooner.
 
 CHAT COMMANDS:
@@ -35,12 +35,15 @@ where <command> can be any of the following:
 	`reset` - Reset to default settings.
 
 CAVEATS, ETC.: 
-	- Feed-O-Matic uses the PeriodicTable library's database of many known foods, but it's not guaranteed to be comprehensive. (Please drop me a line if you find a food that should be on there, or discover that something on the list shouldn't be there.) 
-	- Feed-O-Matic can only update its list of which foods you know how to cook when your Cooking window is open. (So if you read a new recipe, we won't know to preserve the ingredients until you open your Cooking window again.)
+	- Feed-O-Matic uses a database of many known foods, but it's not guaranteed to be comprehensive. (Please drop me a line if you find a food that should be on there, or discover that something on the list shouldn't be there or is listed as the wrong food type.) 
+	- Feed-O-Matic gets its list of Cooking recipes the first time you open your Cooking window. Until then, the Feed-O-Matic Options panel won't show whether foods are used in Cooking. 
 	- Feed-O-Matic's feed button is attached to the default UI's pet frame. Other addons can remove its functionality by removing that frame -- however, many such alternate UIs offer the ability to set custom macro actions for their frames. If your UI allows such, setting a button's action to `/click FOM_FeedButton` will allow clicking it to invoke Feed-O-Matic's pet-feeding action.
 
 ------------------------------------------------------
 VERSION HISTORY
+
+v. 7.0.2 - 2016/09/13
+- Returned the ability to show in Feed-O-Matic's Options panel which foods are used in Cooking recipes (and which recipes each is an ingredient for). 
 
 v. 7.0.1 - 2016/08/29
 - Added support for Mechanical pets in 7.0/Legion. The "mechanical bits" food list is partly guesswork -- please send feedback if you see any issues.
