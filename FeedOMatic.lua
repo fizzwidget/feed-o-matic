@@ -22,18 +22,6 @@ FOM_COOKING_SPELL_ID = 2550;
 -- Variables
 FOM_LastPetName = nil;
 
-local DifficultyToNum = {
-	["optimal"]	= 4,
-	["orange"]	= 4,
-	["medium"]	= 3,
-	["yellow"]	= 3,
-	["easy"]	= 2,
-	["green"]	= 2,
-	["trivial"]	= 1,
-	["gray"]	= 1,
-	["grey"]	= 1,
-}
-
 FOM_DifficultyColors = {
 	QuestDifficultyColors["trivial"],
 	QuestDifficultyColors["standard"],
@@ -844,22 +832,14 @@ function FOM_BuildFoodsUI(panel)
 end
 
 function FOM_FoodListShowTooltip(button)
+	if not button.item then return; end
+	
+	GameTooltip:SetHyperlink("item:"..button.item);
 	if (button.recipe) then
-		GameTooltip:SetHyperlink("enchant:"..button.item);
-		local recipeInfo = C_TradeSkillUI.GetRecipeInfo(button.item);
-		local difficulty;
-		if recipeInfo.learned then
-			difficulty = DifficultyToNum[recipeInfo.difficulty];
-		else
-			difficulty = 5;
-		end
-		local c = FOM_DifficultyColors[difficulty];
-		GameTooltip:AddDoubleLine(FOM_DIFFICULTY_HEADER, getglobal("FOM_DIFFICULTY_"..difficulty), c.r,c.g,c.b, c.r,c.g,c.b);
-		GameTooltip:Show();
-	elseif (button.item) then
-		GameTooltip:SetHyperlink("item:"..button.item);
-		GameTooltip:Show();
+		local c = FOM_DifficultyColors[button.difficulty];
+		GameTooltip:AddDoubleLine(FOM_DIFFICULTY_HEADER, getglobal("FOM_DIFFICULTY_"..button.difficulty), c.r,c.g,c.b, c.r,c.g,c.b);
 	end	
+	GameTooltip:Show();
 end
 
 function FOM_FoodListButton_OnLoad(self)
@@ -1066,18 +1046,19 @@ function FOM_FoodListUIUpdate()
 				local recipes = FOM_Cooking[listItem.id];
 				if (recipes) then
 					local resultIndex = 1;
-					for recipeID in pairs(recipes) do
+					for resultItemID, difficulty in pairs(recipes) do
 						if (resultIndex > MAX_COOKING_RESULTS) then
 							--print("too many recipes for item", listItem.id), resultIndex)
 							break;
 						end
-						local recipeInfo = C_TradeSkillUI.GetRecipeInfo(recipeID);
-						listButton.cookingIcons[resultIndex]:SetTexture(recipeInfo.icon);
+						local icon = select(10, GetItemInfo(resultItemID));
+						listButton.cookingIcons[resultIndex]:SetTexture(icon);
 						listButton.cookingItems[resultIndex]:Show();
-						listButton.cookingItems[resultIndex].item = recipeID;
+						listButton.cookingItems[resultIndex].item = resultItemID;
 						listButton.cookingItems[resultIndex].recipe = true;
+						listButton.cookingItems[resultIndex].difficulty = difficulty;
 
-						if (recipeInfo.learned) then
+						if (difficulty < 5) then
 							listButton.cookingIcons[resultIndex]:SetVertexColor(1, 1, 1);
 						else
 							listButton.cookingIcons[resultIndex]:SetVertexColor(0.4, 0.4, 0.4);
