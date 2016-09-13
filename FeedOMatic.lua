@@ -40,7 +40,12 @@ FOM_CategoryNames = { -- localized keys for FOM_FoodTypes indexes
 function FOM_FeedButton_PostClick(self, button, down)
 	if (not FOM_GetFeedPetSpellName()) then
 		local version = GetAddOnMetadata(addonName, "Version");
-		GFWUtils.PrintOnce(GFWUtils.Red("Feed-O-Matic v."..version.." error:").."Can't find Feed Pet spell. (Have you finished your level 10 Hunter quests?)");
+		local level = GetSpellLevelLearned(slotID);
+		local diagnostic = "";
+		if ( level and level > UnitLevel("player") ) then
+			diagnostic = "This spell requires level "..level..".";
+		end
+		GFWUtils.PrintOnce(GFWUtils.Red("Feed-O-Matic v."..version.." error:").."Can't find Feed Pet spell. "..diagnostic);
 		return;
 	end
 	if (not down) then
