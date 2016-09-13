@@ -6,8 +6,7 @@
 ## Title: Fizzwidget Feed-O-Matic
 ## Notes: Helps a Hunter keep his pets well fed (and the food in his inventory under control).
 ## X-Category: Hunter
-## SavedVariables: GFW_FeedOMatic_DB, FOM_CookingRecipes
-## SavedVariablesPerCharacter: FOM_CookingDifficulty
+## SavedVariables: GFW_FeedOMatic_DB, FOM_Cooking
 ## LoadManagers: AddonLoader
 ## X-LoadOn-Class: Hunter
 
@@ -20,5 +19,6 @@ LocaleSupport.lua
 localization.lua
 FOM_Foods.lua
 FeedOMatic_Emotes.lua
+FOM_CookingScan.lua
 FeedOMatic.lua
 FeedOMatic.xml

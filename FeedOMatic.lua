@@ -22,24 +22,17 @@ FOM_COOKING_SPELL_ID = 2550;
 -- Variables
 FOM_LastPetName = nil;
 
-FOM_CookingDifficulty = {};
-FOM_CookingRecipes = {};
-
--- Anti-freeze code borrowed from ReagentInfo (in turn, from Quest-I-On):
--- keeps WoW from locking up if we try to scan the tradeskill window too fast.
-FOM_TradeSkillLock = { };
-FOM_TradeSkillLock.Locked = false;
-FOM_TradeSkillLock.EventTimer = 0;
-FOM_TradeSkillLock.EventCooldown = 0;
-FOM_TradeSkillLock.EventCooldownTime = 1;
-
-FOM_DifficultyLabels = {
-	GFWUtils.Hilite("all"),
-	GFWUtils.ColorText("easy", QuestDifficultyColors["standard"]),
-	GFWUtils.ColorText("medium", QuestDifficultyColors["difficult"]),
-	GFWUtils.ColorText("difficult", QuestDifficultyColors["verydifficult"]),
-	GFWUtils.ColorText("unknown", QuestDifficultyColors["impossible"]),
-};
+local DifficultyToNum = {
+	["optimal"]	= 4,
+	["orange"]	= 4,
+	["medium"]	= 3,
+	["yellow"]	= 3,
+	["easy"]	= 2,
+	["green"]	= 2,
+	["trivial"]	= 1,
+	["gray"]	= 1,
+	["grey"]	= 1,
+}
 
 FOM_DifficultyColors = {
 	QuestDifficultyColors["trivial"],
@@ -262,6 +255,8 @@ function FOM_Initialize(self)
 		
 	-- track whether foods are useful for Cooking 
 	self:RegisterEvent("TRADE_SKILL_SHOW");
+	self:RegisterEvent("TRADE_SKILL_DATA_SOURCE_CHANGED");
+	self:RegisterEvent("TRADE_SKILL_LIST_UPDATE");
 	self:RegisterEvent("TRADE_SKILL_UPDATE");
 
 	-- Catch when feeding happened so we can notify/emote
@@ -354,7 +349,10 @@ function FOM_OnEvent(self, event, arg1, arg2)
 	
 		FOM_PickFoodQueued = true;
 	
-	elseif (event == "TRADE_SKILL_SHOW" or event == "TRADE_SKILL_UPDATE") then
+	elseif event == "TRADE_SKILL_SHOW"
+	  or event == "TRADE_SKILL_UPDATE"
+	  or event == "TRADE_SKILL_LIST_UPDATE"
+	  or event == "TRADE_SKILL_DATA_SOURCE_CHANGED" then
 		FOM_ScanTradeSkill();
 		return;
 
@@ -402,43 +400,6 @@ function FOM_OnEvent(self, event, arg1, arg2)
 	
 end
 
-function FOM_ScanTradeSkill()
-	if (GetTradeSkillLine() and GetTradeSkillLine() == FOM_CookingSpellName()) then
-		-- Update Cooking reagents list so we can avoid consuming food we could skillup from.
-		if (FOM_CookingDifficulty == nil) then
-			FOM_CookingDifficulty = { };
-		end
-		if (FOM_CookingDifficulty and TradeSkillFrame and TradeSkillFrame:IsVisible() and not FOM_TradeSkillLock.Locked) then
-			-- This prevents further update events from being handled if we're already processing one.
-			-- This is done to prevent the game from freezing under certain conditions.
-			FOM_TradeSkillLock.Locked = true;
-
-			GFWUtils.DebugLog("scanning Cooking list");
-			for i=1, GetNumTradeSkills() do
-				local itemName, type, _, _ = GetTradeSkillInfo(i);
-				if (type ~= "header") then
-					local itemLink = GetTradeSkillItemLink(i);
-					local itemID;
-					if (itemLink) then
-						_, _, itemID = string.find(itemLink, "item:(%d+)");
-						if (itemID) then
-							itemID = tonumber(itemID);
-							FOM_CookingDifficulty[itemID] = FOM_DifficultyToNum(type);
-							local recipeLink = GetTradeSkillRecipeLink(i);
-							if (recipeLink) then
-								local _, _, spellID = string.find(recipeLink, "enchant:(%d+)");
-								if (spellID) then
-									FOM_CookingRecipes[itemID] = tonumber(spellID);
-								end
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
 function FOM_UpdateBindings()
 	if (not InCombatLockdown()) then
 		ClearOverrideBindings(FOM_FeedButton);
@@ -480,38 +441,6 @@ function FOM_ScanQuests()
 	end
 end
 
-function FOM_DifficultyToNum(level)
-	if (level == "optimal" or level == "orange") then
-		return 4;
-	elseif (level == "medium" or level == "yellow") then
-		return 3;
-	elseif (level == "easy" or level == "green") then
-		return 2;
-	elseif (level == "trivial" or level == "gray" or level == "grey") then
-		return 1;
-	else -- bad input
-		return nil;
-	end
-end
-
-function FOM_OnUpdate(self, elapsed)
-
-	-- If it's been more than a second since our last tradeskill update,
-	-- we can allow the event to process again.
-	FOM_TradeSkillLock.EventTimer = FOM_TradeSkillLock.EventTimer + elapsed;
-	if (FOM_TradeSkillLock.Locked) then
-		FOM_TradeSkillLock.EventCooldown = FOM_TradeSkillLock.EventCooldown + elapsed;
-		if (FOM_TradeSkillLock.EventCooldown > FOM_TradeSkillLock.EventCooldownTime) then
-
-			FOM_TradeSkillLock.EventCooldown = 0;
-			FOM_TradeSkillLock.Locked = false;
-		end
-	end
-		
-	--GFWUtils.Debug = true;
-
-end
-
 function FOM_ChatCommandHandler(msg)
 
 	if ( msg == "" ) then
@@ -549,7 +478,6 @@ function FOM_ChatCommandHandler(msg)
 	-- Reset Variables
 	if ( msg == "reset" ) then
 		GFW_FeedOMatic.db:ResetProfile();
-		FOM_CookingDifficulty = nil;
 		FOM_QuestFood = nil;
 		GFWUtils.Print("Feed-O-Matic configuration reset.");
 		return;
@@ -557,22 +485,6 @@ function FOM_ChatCommandHandler(msg)
 	
 	-- if we got down to here, we got bad input
 	FOM_ChatCommandHandler("help");
-end
-
--- Check Feed Effect
-function FOM_HasFeedEffect()
-
-	local i = 1;
-	local _, _, buff = UnitBuff("pet", i);
-	while buff do
-		if ( string.find(buff, "Ability_Hunter_BeastTraining") ) then
-			return true;
-		end
-		i = i + 1;
-		_, _, buff = UnitBuff("pet", i);
-	end
-	return false;
-
 end
 
 function FOM_PickFoodForButton()
@@ -838,11 +750,7 @@ end
 FOM_DietForFood = FOM_IsInDiet
 
 function FOM_IsKnownFood(itemID)
-	return FOM_IsInDiet(itemID, {FOM_DIET_MEAT, FOM_DIET_FISH, FOM_DIET_BREAD, FOM_DIET_CHEESE, FOM_DIET_FRUIT, FOM_DIET_FUNGUS});
-end
-
-function FOM_CookingSpellName()
-	return (GetSpellInfo(FOM_COOKING_SPELL_ID));
+	return FOM_IsInDiet(itemID, {FOM_DIET_MEAT, FOM_DIET_FISH, FOM_DIET_BREAD, FOM_DIET_CHEESE, FOM_DIET_FRUIT, FOM_DIET_FUNGUS, FOM_DIET_MECH});
 end
 
 function FOM_IsSpecialBag(bagNum)
@@ -911,10 +819,9 @@ function FOM_BuildFoodsUI(panel)
 	s:SetPoint("TOPLEFT", borderFrame, "TOPLEFT", 53, -12);
 	s:SetText(FOM_OPTIONS_FOODS_NAME);
 	
-	-- DISABLED until I replace PT TradeskillResultMats
-	-- s = panel:CreateFontString("FOM_FoodList_CookingHeader", "OVERLAY", "GameFontNormalSmall");
-	-- s:SetPoint("TOPRIGHT", borderFrame, "TOPRIGHT", -26, -12);
-	-- s:SetText(FOM_OPTIONS_FOODS_COOKING);
+	s = panel:CreateFontString("FOM_FoodList_CookingHeader", "OVERLAY", "GameFontNormalSmall");
+	s:SetPoint("TOPRIGHT", borderFrame, "TOPRIGHT", -26, -12);
+	s:SetText(FOM_OPTIONS_FOODS_COOKING);
 	
 	local listItem = CreateFrame("Button", "FOM_FoodList1", panel, "FOM_FoodListItemTemplate");
 	listItem:SetPoint("TOPLEFT", borderFrame, "TOPLEFT", 5, -29);
@@ -938,13 +845,14 @@ end
 
 function FOM_FoodListShowTooltip(button)
 	if (button.recipe) then
-		local recipe = FOM_CookingRecipes[button.item];
-		if (recipe) then
-			GameTooltip:SetHyperlink("enchant:"..recipe);
+		GameTooltip:SetHyperlink("enchant:"..button.item);
+		local recipeInfo = C_TradeSkillUI.GetRecipeInfo(button.item);
+		local difficulty;
+		if recipeInfo.learned then
+			difficulty = DifficultyToNum[recipeInfo.difficulty];
 		else
-			GameTooltip:SetHyperlink("item:"..button.item);
+			difficulty = 5;
 		end
-		local difficulty = FOM_CookingDifficulty[button.item] or 5;
 		local c = FOM_DifficultyColors[difficulty];
 		GameTooltip:AddDoubleLine(FOM_DIFFICULTY_HEADER, getglobal("FOM_DIFFICULTY_"..difficulty), c.r,c.g,c.b, c.r,c.g,c.b);
 		GameTooltip:Show();
@@ -1155,37 +1063,28 @@ function FOM_FoodListUIUpdate()
 					listButton.cookingIcons[iconIndex]:SetTexture("");
 					listButton.cookingItems[iconIndex]:Hide();
 				end
-				-- DISABLED until I have a replacement for PT TradeskillResultMats
-				-- local cookingResultString = PT:ItemInSet(listItem.id, "TradeskillResultMats.Reverse.Cooking");
-				-- if (cookingResultString) then
-				-- 	local resultIndex = 1;
-				-- 	local cookingResults = {strsplit(";", cookingResultString)};
-				-- 	for _, resultString in pairs(cookingResults) do
-				-- 		local _, _, itemID = string.find(resultString, "^(%d+)");
-				-- 		if (itemID) then
-				-- 			if (resultIndex > MAX_COOKING_RESULTS) then
-				-- 				--print(GetItemInfo(listItem.id), resultIndex)
-				-- 				break;
-				-- 			end
-				--
-				-- 			itemID = tonumber(itemID);
-				-- 			icon = GetItemIcon(itemID);
-				-- 			listButton.cookingIcons[resultIndex]:SetTexture(icon);
-				-- 			listButton.cookingItems[resultIndex]:Show();
-				-- 			listButton.cookingItems[resultIndex].item = itemID;
-				-- 			listButton.cookingItems[resultIndex].recipe = true;
-				--
-				-- 			local difficulty = FOM_CookingDifficulty[itemID];
-				-- 			if (difficulty) then
-				-- 				listButton.cookingIcons[resultIndex]:SetVertexColor(1, 1, 1);
-				-- 			else
-				-- 				listButton.cookingIcons[resultIndex]:SetVertexColor(0.25, 0.25, 0.25);
-				-- 			end
-				-- 			resultIndex = resultIndex + 1;
-				-- 		end
-				-- 	end
-				-- end
-				--
+				local recipes = FOM_Cooking[listItem.id];
+				if (recipes) then
+					local resultIndex = 1;
+					for recipeID in pairs(recipes) do
+						if (resultIndex > MAX_COOKING_RESULTS) then
+							--print("too many recipes for item", listItem.id), resultIndex)
+							break;
+						end
+						local recipeInfo = C_TradeSkillUI.GetRecipeInfo(recipeID);
+						listButton.cookingIcons[resultIndex]:SetTexture(recipeInfo.icon);
+						listButton.cookingItems[resultIndex]:Show();
+						listButton.cookingItems[resultIndex].item = recipeID;
+						listButton.cookingItems[resultIndex].recipe = true;
+
+						if (recipeInfo.learned) then
+							listButton.cookingIcons[resultIndex]:SetVertexColor(1, 1, 1);
+						else
+							listButton.cookingIcons[resultIndex]:SetVertexColor(0.4, 0.4, 0.4);
+						end
+						resultIndex = resultIndex + 1;
+					end
+				end
 							
 				if (FOM_Config.excludedFoods[listItem.id] or FOM_Config.excludedCategories[listItem.header]) then
 					listButton.check:Hide();
