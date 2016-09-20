@@ -37,6 +37,16 @@ FOM_CategoryNames = { -- localized keys for FOM_FoodTypes indexes
 	FOM_OPTIONS_FOODS_INEDIBLE,
 };
 
+FOM_DietColors = { -- convenient reuse of familiar colors?
+	[FOM_DIET_MEAT]		= RAID_CLASS_COLORS.DEATHKNIGHT,
+	[FOM_DIET_FISH]		= RAID_CLASS_COLORS.PALADIN,
+	[FOM_DIET_BREAD]	= RAID_CLASS_COLORS.ROGUE,
+	[FOM_DIET_CHEESE]	= RAID_CLASS_COLORS.WARRIOR,
+	[FOM_DIET_FRUIT]	= RAID_CLASS_COLORS.DRUID,
+	[FOM_DIET_FUNGUS]	= RAID_CLASS_COLORS.WARLOCK,
+	[FOM_DIET_MECH]		= RAID_CLASS_COLORS.PRIEST,
+};
+
 function FOM_FeedButton_PostClick(self, button, down)
 	if (not FOM_GetFeedPetSpellName()) then
 		local version = GetAddOnMetadata(addonName, "Version");
@@ -63,6 +73,17 @@ function FOM_FeedButton_PostClick(self, button, down)
 	end
 end
 
+function FOM_GetColoredDiet()
+	local dietList = {GetPetFoodTypes()};
+	local coloredDiets = {};
+	for _, dietName in pairs(dietList) do 
+		local color = FOM_DietColors[dietName];
+		local coloredText = CreateColor(color.r, color.g, color.b):WrapTextInColorCode(dietName);
+		table.insert(coloredDiets, coloredText);
+	end
+	return table.concat(coloredDiets, ", ");
+end
+
 function FOM_FeedButton_OnEnter()
 	if (FOM_Config.NoFeedButtonTooltip) then return; end
 	
@@ -71,20 +92,24 @@ function FOM_FeedButton_OnEnter()
 	local linesAdded = 0;
 	if (FOM_NextFoodLink) then
 
+		-- food to be used on click
 		local bag = FOM_FeedButton:GetAttribute("target-bag");
 		local slot = FOM_FeedButton:GetAttribute("target-slot");
 		FOM_FeedTooltip:SetBagItem(bag,slot);
 		
 		if (FOM_NoFoodError) then
+			-- fallback instructions
 			FOM_FeedTooltipHeader:SetText(FOM_BUTTON_TOOLTIP1_FALLBACK);
 			FOM_FeedTooltip:AddLine(" ");
 			blankLine = true;
 			FOM_FeedTooltip:AddLine(FOM_NoFoodError, RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b, 1);
 			linesAdded = linesAdded + 1;
 		else
+			-- left click to feed
 			FOM_FeedTooltipHeader:SetText(FOM_BUTTON_TOOLTIP1);
 		end
 	else
+		-- no food
 		FOM_FeedTooltipHeader:SetText(FOM_BUTTON_TOOLTIP_NOFOOD);
 		blankLine = true;
 		FOM_FeedTooltip:AddLine(FOM_NoFoodError, RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b, 1);
@@ -93,6 +118,12 @@ function FOM_FeedButton_OnEnter()
 	if (not blankLine) then
 		FOM_FeedTooltip:AddLine(" ");
 	end
+	
+	-- diet summary
+	FOM_FeedTooltip:AddDoubleLine(string.format(FOM_BUTTON_TOOLTIP_DIET, UnitName("pet")), FOM_GetColoredDiet());
+	linesAdded = linesAdded + 1;
+
+	-- right click for options
 	FOM_FeedTooltip:AddLine(FOM_BUTTON_TOOLTIP2, GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b);
 	linesAdded = linesAdded + 1;
 	
@@ -186,37 +217,58 @@ function FOM_HookTooltip(frame)
 end
 
 function FOM_OnTooltipSetItem(self)
-	local name, link = self:GetItem();
 
-	if (FOM_Config.Tooltip and link and UnitExists("pet")) then
-				
-		local itemID = FOM_IDFromLink(link);
-		if (not FOM_IsInDiet(itemID)) then
-			return false;
-		end
+	if FOM_Config.Tooltip then
+		local _, link = self:GetItem();
+		if not link then return false; end
 		
-		local color;
-		local _, _, _, itemLevel = GetItemInfo(itemID);
-		if (itemLevel) then
-			local levelDelta = UnitLevel("pet") - itemLevel;
-			local petName = UnitName("pet");
-			if (levelDelta >= FOM_DELTA_EATS) then
-				color = QuestDifficultyColors["trivial"];
-				self:AddLine(string.format(FOM_QUALITY_UNDER, petName), color.r, color.g, color.b);
-				return true;
-			elseif (levelDelta >= FOM_DELTA_LIKES and levelDelta < FOM_DELTA_EATS) then
-				color = QuestDifficultyColors["standard"];
-				self:AddLine(string.format(FOM_QUALITY_WILL, petName), color.r, color.g, color.b);
-				return true;
-			elseif (levelDelta >= FOM_DELTA_LOVES and levelDelta < FOM_DELTA_LIKES) then
-				color = QuestDifficultyColors["difficult"];
-				self:AddLine(string.format(FOM_QUALITY_LIKE, petName), color.r, color.g, color.b);
-				return true;
-			elseif (levelDelta < FOM_DELTA_LOVES) then
-				color = QuestDifficultyColors["verydifficult"];
-				self:AddLine(string.format(FOM_QUALITY_LOVE, petName), color.r, color.g, color.b);
-				return true;
+		local itemID = FOM_IDFromLink(link);
+		local foodDiet = FOM_IsKnownFood(itemID);
+		if not foodDiet then return false; end
+	
+		-- if edible at all, label diet in tooltip
+		local color = FOM_DietColors[foodDiet];
+		local coloredText = CreateColor(color.r, color.g, color.b):WrapTextInColorCode(foodDiet);
+		local label = _G[self:GetName().."TextRight1"]
+		label:SetText(coloredText);
+		label:Show();
+		
+		-- if edible by current pet, add line for quality
+		if (link and UnitExists("pet")) then
+			for _, petDiet in pairs({GetPetFoodTypes()}) do
+				if petDiet == foodDiet then
+					return FOM_TooltipAddFoodQuality(self, itemID);
+				end
 			end
+			return true;
+		end
+	else
+		return false;
+	end
+	
+end
+
+function FOM_TooltipAddFoodQuality(self, itemID)
+	local _, _, _, itemLevel = GetItemInfo(itemID);
+	if (itemLevel) then
+		local levelDelta = UnitLevel("pet") - itemLevel;
+		local petName = UnitName("pet");
+		if (levelDelta >= FOM_DELTA_EATS) then
+			color = QuestDifficultyColors["trivial"];
+			self:AddLine(string.format(FOM_QUALITY_UNDER, petName), color.r, color.g, color.b);
+			return true;
+		elseif (levelDelta >= FOM_DELTA_LIKES and levelDelta < FOM_DELTA_EATS) then
+			color = QuestDifficultyColors["standard"];
+			self:AddLine(string.format(FOM_QUALITY_WILL, petName), color.r, color.g, color.b);
+			return true;
+		elseif (levelDelta >= FOM_DELTA_LOVES and levelDelta < FOM_DELTA_LIKES) then
+			color = QuestDifficultyColors["difficult"];
+			self:AddLine(string.format(FOM_QUALITY_LIKE, petName), color.r, color.g, color.b);
+			return true;
+		elseif (levelDelta < FOM_DELTA_LOVES) then
+			color = QuestDifficultyColors["verydifficult"];
+			self:AddLine(string.format(FOM_QUALITY_LOVE, petName), color.r, color.g, color.b);
+			return true;
 		end
 	end
 end
@@ -1225,7 +1277,7 @@ local options = {
 							   	    name = FOM_OPTIONS_FOODS_ONLY_PET,
 					desc = function()
 						if (UnitExists("pet")) then
-							return format(FOM_OPTIONS_FOODS_ONLY_PET_TIP, UnitLevel("pet"), UnitCreatureFamily("pet"));
+							return format(FOM_OPTIONS_FOODS_ONLY_PET_TIP, UnitLevel("pet"), UnitCreatureFamily("pet")) .. "\n(".. FOM_GetColoredDiet()..")";
 						else
 							return format(FOM_OPTIONS_FOODS_ONLY_LVL_TIP, UnitLevel("player"));
 						end

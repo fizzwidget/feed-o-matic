@@ -10,6 +10,7 @@ FOM_BUTTON_TOOLTIP1				= "Left-Click to Feed Pet:"
 FOM_BUTTON_TOOLTIP1_FALLBACK	= "Alt-Left-Click to Feed Pet:"
 FOM_BUTTON_TOOLTIP2				= "<Right-Click for Options>"
 FOM_BUTTON_TOOLTIP_NOFOOD		= "Cannot Feed Pet"
+FOM_BUTTON_TOOLTIP_DIET			= "%s eats:"
 
 -- Used in tooltips to indicate food quality.
 FOM_QUALITY_UNDER				= "%s doesn't like this anymore."
