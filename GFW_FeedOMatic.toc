@@ -1,5 +1,5 @@
 ## Interface: 70000
-## Version: 7.0.1
+## Version: 7.0.2
 ## Author: Gazmik Fizzwidget
 ## X-Website: http://fizzwidget.com/feedomatic
 ## X-Appcast: http://fizzwidget.com/notes/feedomatic/feed
