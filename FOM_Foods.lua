@@ -928,7 +928,6 @@ FOM_Foods = {
 		[ 77468] = F.INEDIBLE, -- High-Explosive Gunpowder 
 		[ 90146] = F.INEDIBLE, -- Tinker's Kit 
 		[ 94113] = F.INEDIBLE, -- Jard's Peculiar Energy Source 
-		[111366] = F.INEDIBLE, -- Gearspring Parts 
 		
 		-- Plus others that have been tested
 		[   814] = F.INEDIBLE, -- Flask of Oil
