@@ -302,11 +302,10 @@ function FOM_Initialize(self)
 	self:RegisterEvent("TRADE_SKILL_SHOW");
 	self:RegisterEvent("TRADE_SKILL_DATA_SOURCE_CHANGED");
 	self:RegisterEvent("TRADE_SKILL_LIST_UPDATE");
-	self:RegisterEvent("TRADE_SKILL_UPDATE");
+	self:RegisterEvent("TRADE_SKILL_DETAILS_UPDATE");
 
 	-- Catch when feeding happened so we can notify/emote
 	self:RegisterEvent("CHAT_MSG_PET_INFO");
-	self:RegisterEvent("CHAT_MSG_SPELL_TRADESKILLS");
 	
 	-- Only subscribe to inventory updates once we're in the world
 	self:RegisterEvent("PLAYER_ENTERING_WORLD");
@@ -395,13 +394,13 @@ function FOM_OnEvent(self, event, arg1, arg2)
 		FOM_PickFoodQueued = true;
 	
 	elseif event == "TRADE_SKILL_SHOW"
-	  or event == "TRADE_SKILL_UPDATE"
+	  or event == "TRADE_SKILL_DETAILS_UPDATE"
 	  or event == "TRADE_SKILL_LIST_UPDATE"
 	  or event == "TRADE_SKILL_DATA_SOURCE_CHANGED" then
 		FOM_ScanTradeSkill();
 		return;
 
-	elseif (event == "CHAT_MSG_PET_INFO" or event == "CHAT_MSG_SPELL_TRADESKILLS") then
+	elseif (event == "CHAT_MSG_PET_INFO") then
 		if (not FOM_FEEDPET_LOG_FIRSTPERSON) then
 			FOM_FEEDPET_LOG_FIRSTPERSON = GFWUtils.FormatToPattern(FEEDPET_LOG_FIRSTPERSON);
 		end
