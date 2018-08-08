@@ -322,6 +322,48 @@ FOM_Foods = {
 		[136556] = F.BASIC, -- Legion Spoiling Ration 
 		[140344] = F.BASIC, -- Preserved Pickled Egg 
 
+		-- Battle for Azeroth
+		[154882] = F.BONUS, -- Honey-Glazed Haunches
+		[154888] = F.BONUS, -- Sailor's Pie
+		[155811] = F.BASIC, -- Roland's Famous Frankfurter
+		[155812] = F.BASIC, -- Goldshire Farms Smoked Sausage
+		[158466] = F.BASIC, -- Fort Victory Sausage
+		[161346] = F.BASIC, -- Saurid Sticks
+		[160517] = F.BASIC, -- Saurid Sticks
+		[160518] = F.BASIC, -- Great Turtle Soup
+		[160611] = F.BASIC, -- Woven Bacon
+		[163841] = F.BASIC, -- Dung Beetle Surprise
+		[163781] = F.BONUS, -- Heartsbane Hexwurst
+		[162550] = F.BASIC, -- Brutoburger
+		[163081] = F.BONUS, -- Spicy Barbecued Buzzard Wing
+		[163208] = F.BASIC, -- Uncle Sezahjin's Fried Chicken
+		[161347] = F.BASIC, -- Riverbeast Stew
+		[162557] = F.BASIC, -- Salted Frog Legs
+		[163083] = F.BASIC, -- Col. Tenders Spiced Chicken
+		[163181] = F.BASIC, -- Firelord P'terrorwings
+		[162568] = F.BASIC, -- Desert Dry Rub P'terrorwings
+		[162582] = F.BASIC, -- Jungle Heat P'terrorwings
+		[162583] = F.BASIC, -- Swamp Spice P'terrorwings
+		[163117] = F.BASIC, -- Zandalari Kingsteak
+		[163118] = F.BASIC, -- Brutosaur Tikka
+		[162558] = F.BASIC, -- Broiled Crocolisk
+		[163115] = F.BASIC, -- Curried Axebeak Skewer
+		[162562] = F.BASIC, -- Crunchy Direbat Skewer
+		[162565] = F.BASIC, -- Dustmane Jerky
+		[163052] = F.BASIC, -- Dry Goat Strips
+		[163056] = F.BASIC, -- Greatstag Flank Steak
+		[163057] = F.BASIC, -- Honey and Sausage Mash
+		[163100] = F.BASIC, -- Kul Tiran Meatballs
+		[163106] = F.BASIC, -- Seasoned Stag Jerky
+		[163108] = F.BASIC, -- Ravasaur Empanadas
+		[163110] = F.BASIC, -- Fried Boar Sausage
+		[154891] = F.BASIC, -- Seasoned Loins
+		[158926] = F.BASIC, -- Fried Turtle Bits
+		[152631] = F.INEDIBLE, -- Briny Flesh
+		[154897] = F.INEDIBLE, -- Stringy Loins
+		[154898] = F.INEDIBLE, -- Meaty Haunch
+		[154899] = F.INEDIBLE, -- Thick Paleo Steak
+		[163782] = F.INEDIBLE, -- Cursed Haunch
 		
 	},
 	[FOM_DIET_FISH] = {
@@ -603,6 +645,32 @@ FOM_Foods = {
 		[124112] = F.INEDIBLE, -- Black Barracuda 
 		[133607] = F.INEDIBLE, -- Silver Mackerel 
 		
+		-- Battle for Azeroth
+		[154884] = F.BONUS, -- Swamp Fish 'n Chips
+		[154889] = F.BASIC, -- Grilled Catfish
+		[154886] = F.BONUS, -- Spiced Snapper
+		[159919] = F.BASIC, -- Salted Tideway Cod
+		[160483] = F.BASIC, -- Steamed Clams
+		[159920] = F.BASIC, -- Fermented Greatshark
+		[161373] = F.BASIC, -- Seared Simmerfin
+		[163075] = F.BASIC, -- Stormshore Haddock
+		[163076] = F.BASIC, -- Murkfathom Herring
+		[163058] = F.BASIC, -- Jellied Deepsea Eel
+		[161383] = F.BASIC, -- Jancunda Nigiri
+		[162545] = F.BASIC, -- Razordog
+		[163077] = F.BASIC, -- Glacier Bay Halibut
+		[162546] = F.BASIC, -- Boiled Mire Whelk
+		[163050] = F.BASIC, -- Sea-Bone Soup
+		[163105] = F.BASIC, -- Peppered Trout Jerky
+		[163114] = F.BASIC, -- Leek Boiled Escargot
+		[152543] = F.INEDIBLE, -- Sand Shifter
+		[152544] = F.INEDIBLE, -- Slimy Mackerel
+		[152545] = F.INEDIBLE, -- Frenzied Fangtooth
+		[152546] = F.INEDIBLE, -- Lane Snapper
+		[152547] = F.INEDIBLE, -- Great Sea Catfish
+		[152548] = F.INEDIBLE, -- Tiragarde Perch
+		[152549] = F.INEDIBLE, -- Redtail Loach
+		
 	},
 	[FOM_DIET_BREAD] = {
 		-- Mists and before
@@ -699,7 +767,7 @@ FOM_Foods = {
 		[132752] = F.BASIC, -- Illidari Rations 
 		[132753] = F.BASIC, -- Legion Rations 
 		
-		-- temp parking for unguessable
+		-- temp parking for unguessable (Legion)
 		[140286] = F.BASIC, -- Nightbites 
 		[140296] = F.BASIC, -- Gummy Wyrm 
 		[140297] = F.BASIC, -- Shal'dorice Cream 
@@ -709,6 +777,36 @@ FOM_Foods = {
 		[141207] = F.BASIC, -- J'llah Suspension 
 		[128848] = F.BASIC, -- Roasted Maize 
 		[138987] = F.BASIC, -- Butterhoof Can't Believe It's Butter 
+		
+		-- Battle for Azeroth
+		[154881] = F.BONUS, -- Kul Tiramisu
+		[159879] = F.BASIC, -- Glenbrook Pudding
+		[159899] = F.BASIC, -- Cinnamon Raisin Pretzel
+		[159900] = F.BASIC, -- Caraway Rye Loaf
+		[160554] = F.BASIC, -- Stormsong Sourdough
+		[161314] = F.BASIC, -- Tweets' Flavorful Flan
+		[161321] = F.BASIC, -- Dark Smores
+		[161384] = F.BASIC, -- Farraki Fritters
+		[162117] = F.BONUS, -- Marie's Famous Cookies
+		[163107] = F.BASIC, -- Deep-Fried Butter Cookies
+		[163060] = F.BASIC, -- Fried Sweetbread
+		[163116] = F.BASIC, -- Riversprout Samosa
+		[163109] = F.BASIC, -- Frosted Umbernut Cake
+		[163051] = F.BASIC, -- Seafarer's Biscuit
+		[154883] = F.BONUS, -- Ravenberry Tarts
+		[154887] = F.BONUS, -- Loa Loaf
+		[154885] = F.BONUS, -- Mon'Dazi
+		
+		-- Unknown (Battle for Azeroth)
+		[152698] = F.BONUS, -- Grimestone Stew
+		[156835] = F.BONUS, -- Delicious Honey
+		[155592] = F.BASIC, -- Stolen Candy
+		[161127] = F.BASIC, -- Unsalted Pine Nuts
+		[161128] = F.BASIC, -- Seaside Leafy Greens Mix
+		[162559] = F.BASIC, -- Hearty Swamp Gumbo
+		[162561] = F.BASIC, -- Glowfly Wedge Salad
+		[163049] = F.BASIC, -- Dark Bean Hash
+		[163061] = F.BASIC, -- Roasted Lasher Seeds
 		
 	},
 	[FOM_DIET_CHEESE] = {
@@ -751,6 +849,16 @@ FOM_Foods = {
 		[138979] = F.BASIC, -- Spicy Sharp Cheddar 
 		[138980] = F.BASIC, -- Butterhoof Singles 
 		[140339] = F.BASIC, -- Hormone Free - Alterac Swiss 
+
+		-- Battle for Azeroth
+		[159874] = F.BASIC, -- Tiragarde Sharp
+		[159873] = F.BASIC, -- Hatherford Brunost
+		[159875] = F.BASIC, -- Sour Vanilla Skyr
+		[159876] = F.BASIC, -- Boralus Bleu
+		[161126] = F.BASIC, -- Slab of Cream Cheese
+		[162555] = F.BASIC, -- Zocalo Cheddar
+		[162567] = F.BASIC, -- Aged Alpaca Ricotta
+		[162566] = F.BASIC, -- Sun-Turned Curds
 
 	},
 	[FOM_DIET_FRUIT] = {
@@ -850,6 +958,27 @@ FOM_Foods = {
 		[124036] = F.BASIC, -- Juicy Apple 
 		[140355] = F.BASIC, -- (manargn) Laden Apple 
 		
+		-- Battle for Azeroth
+		[164376] = F.BASIC, -- Perfectly Ripe Banana
+		[159869] = F.BASIC, -- Goldfield Sweet Yams
+		[159870] = F.BASIC, -- Spiced Drustvar Rutabaga
+		[159871] = F.BASIC, -- Buttered Turnip Porridge
+		[159872] = F.BASIC, -- Braised Red Cabbage
+		[159878] = F.BASIC, -- Snowberry Custard
+		[159897] = F.BASIC, -- Crimsonwood Crabapple
+		[159898] = F.BASIC, -- Sour Stormberries
+		[160989] = F.BASIC, -- Dried Grape and Potato Salad
+		[162554] = F.BASIC, -- Rootway Papaya
+		[162563] = F.BASIC, -- Succulent Dunemelon
+		[162564] = F.BASIC, -- Whistlebloom Pomegranate
+		[162556] = F.BASIC, -- Zeb'Ahri Kiwi
+		[163054] = F.BASIC, -- Stranglethorn Prickly Pear
+		[163133] = F.BASIC, -- Jungle Sunfruit
+		[161348] = F.BASIC, -- Carnivorous Chili Poppers
+		[163053] = F.BASIC, -- Southsea Breadfruit
+		[160709] = F.INEDIBLE, -- Fresh Potato
+		[160710] = F.INEDIBLE, -- Wild Berries
+		
 	},
 	[FOM_DIET_FUNGUS] = {
 		-- Mists and before
@@ -885,6 +1014,10 @@ FOM_Foods = {
 		[136550] = F.BASIC, -- Deepearth Root Straws 
 		[141208] = F.BASIC, -- Midnight Morel 
 		[113099] = F.BASIC, -- Shadowcap Mushrooms 
+		
+		-- Battle for Azeroth
+		[163134] = F.BASIC, -- No Morel Truffle
+		[163135] = F.BASIC, -- Battersnoosh's Toadstool
 		
 	},
 	[FOM_DIET_MECH] = {
@@ -932,4 +1065,13 @@ FOM_Foods = {
 		-- Plus others that have been tested
 		[   814] = F.INEDIBLE, -- Flask of Oil
 	},
+};
+
+-- Might not be foods, but if they are there's no telling which diet...
+local FOM_UnknownFoods = {
+	[160398] = F.INEDIBLE, -- Choral Honey
+	[160399] = F.INEDIBLE, -- Wild Flour
+	[160400] = F.INEDIBLE, -- Foosaka
+	[160711] = F.INEDIBLE, -- Aromatic Fish Oil
+	[160712] = F.INEDIBLE, -- Powdered Sugar
 };
