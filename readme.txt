@@ -42,6 +42,10 @@ CAVEATS, ETC.:
 ------------------------------------------------------
 VERSION HISTORY
 
+v. 8.0 - 2018/08/08
+- Updated to support WoW Patch 8.0. 
+- Added Battle for Azeroth foods. (For many new foods, the category/diet is an untested guess. If you encounter issues, please send feedback at https://github.com/fizzwidget/feed-o-matic/issues.)
+
 v. 7.0.2 - 2016/09/20
 - Returned the ability to show in Feed-O-Matic's Options panel which foods are used in Cooking recipes (and which recipes each is an ingredient for).
 - WoW Patch 7.0 removed the UI for showing your pet's diet. You could cast Beast Lore on your pet to find out, but that's a pain... so now Feed-O-Matic shows you. You'll find a list of the food types your pet can eat both in the tooltip for the feed button and in the tooltip for "show only foods my pet can eat" in the Options panel.
