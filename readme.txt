@@ -45,6 +45,7 @@ VERSION HISTORY
 v. 8.0 - 2018/08/08
 - Updated to support WoW Patch 8.0. 
 - Added Battle for Azeroth foods. (For many new foods, the category/diet is an untested guess. If you encounter issues, please send feedback at https://github.com/fizzwidget/feed-o-matic/issues.)
+- No longer treats Gearspring Parts as edible by Mechanical pets.
 
 v. 7.0.2 - 2016/09/20
 - Returned the ability to show in Feed-O-Matic's Options panel which foods are used in Cooking recipes (and which recipes each is an ingredient for).
